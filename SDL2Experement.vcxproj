@@ -87,12 +87,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2-2.30.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libs\SDL2-2.30.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2-2.30.2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libs\SDL2-2.30.2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
