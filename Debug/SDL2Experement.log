@@ -1,0 +1,16 @@
+﻿  Car.cpp
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(37,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Car.cpp(38,33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Person.cpp
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(37,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(84,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(88,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(92,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(108,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(109,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  RenderObject.cpp
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\RenderObject.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Physics.hpp(37,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  SDL2Experement.vcxproj -> C:\Users\redst\OneDrive\Desktop\SDL2 Experement\SDL2Experement\Debug\SDL2Experement.exe
