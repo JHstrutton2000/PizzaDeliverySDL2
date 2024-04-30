@@ -20,6 +20,7 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::vector<Rendered*> objects;
+	int maxStage = 0;
 };
 
 extern RenderManager* renderManager;

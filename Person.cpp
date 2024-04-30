@@ -9,6 +9,8 @@ Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 
 	maxAcceleration = 0.1f;
 	maxVelocity = 0.1f;
+
+	stage = 1;
 }
 
 Person::~Person() {

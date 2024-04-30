@@ -11,6 +11,8 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 
 	doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
 	//yardPos = new SDL_FRect{ _pos->x - 10, _pos->y -10, 120, 120 };
+
+	stage = 3;
 }
 Building::~Building() {
 	//delete yardPos;

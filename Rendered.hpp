@@ -11,8 +11,10 @@ protected:
 	float* rot;
 	SDL_Color* color;
 	SDL_Renderer* renderer;
+	int stage = 0;
 public:
 	virtual void Render(SDL_Renderer* renderer) { return; }
+	virtual int getStage() { return stage; }
 };
 
 #endif //Rendered_hpp

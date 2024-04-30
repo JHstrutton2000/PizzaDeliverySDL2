@@ -24,11 +24,20 @@ void RenderManager::render() {
 		return;
 	}
 
-	SDL_SetRenderDrawColor(renderer, 0, 250, 0, 0);
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0);
 	SDL_RenderClear(renderer);
+	for (int stage = 0; stage <= maxStage; stage++) {
+		for (int i = 0; i < objects.size(); i++) {
+			int curStage = objects[i]->getStage();
 
-	for (int i = 0; i < objects.size(); i++) {
-		objects[i]->Render(renderer);
+			if (curStage = maxStage) {
+				maxStage = curStage;
+			}
+
+			if (curStage == stage) {
+				objects[i]->Render(renderer);
+			}
+		}
 	}
 
 	SDL_RenderPresent(renderer);

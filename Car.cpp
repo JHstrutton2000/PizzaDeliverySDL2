@@ -11,6 +11,8 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 
 	maxAcceleration = 2;
 	maxVelocity = 2;
+
+	stage = 2;
 }
 
 Car::~Car() {
