@@ -24,7 +24,7 @@ void RenderManager::render() {
 		return;
 	}
 
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(renderer, 0, 250, 0, 0);
 	SDL_RenderClear(renderer);
 
 	for (int i = 0; i < objects.size(); i++) {
@@ -34,7 +34,7 @@ void RenderManager::render() {
 	SDL_RenderPresent(renderer);
 }
 
-void RenderManager::addObject(RenderObj* object) {
+void RenderManager::addObject(Rendered* object) {
 	objects.push_back(object);
 }
 

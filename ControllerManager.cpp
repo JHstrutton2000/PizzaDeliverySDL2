@@ -2,14 +2,6 @@
 #include "physicsManager.h"
 #include "InteractableManager.h"
 
-ControllerManager::ControllerManager() {
-
-}
-
-ControllerManager::~ControllerManager() {
-
-}
-
 void ControllerManager::AssignControlledObject(Physics* setObject) {
 	object = setObject;
 }

@@ -36,6 +36,7 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
+    <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderObject.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

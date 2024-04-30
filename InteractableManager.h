@@ -3,9 +3,6 @@
 
 class InteractableManager {
 public:
-	InteractableManager();
-	~InteractableManager();
-
 	void addObject(Physics* object);
 	Physics* nearestInteractable(Physics* object);
 private:

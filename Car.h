@@ -1,9 +1,9 @@
 #include <SDL.h>
-#include "RenderObject.h"
+#include "Rendered.hpp"
 #include "Physics.hpp"
 #include <string>
 
-class Car : public RenderObj, public Physics{
+class Car : public Rendered, public Physics{
 public:
 	Car(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x20, 0x20, 0x00 });
 	~Car();

@@ -1,8 +1,8 @@
 #include <SDL.h>
 #include "Physics.hpp"
-#include "RenderObject.h"
+#include "Rendered.hpp"
 
-class Person : public RenderObj, public Physics {
+class Person : public Rendered, public Physics {
 public:
 	Person(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x90, 0x20, 0x00 });
 	~Person();

@@ -45,28 +45,28 @@ void Car::Render(SDL_Renderer* renderer) {
 	SDL_FPoint adjustedbottomLeft  = { -w/2, -h/2 };
 	
 	float angleTopRight    = atanf(adjustedtopRight.y    / adjustedtopRight.x   ) - heading;
-	float angleTopLeft	   = atanf(adjustedtopLeft.y     / adjustedtopLeft.x    ) - heading;
+	float angleTopLeft	    = atanf(adjustedtopLeft.y     / adjustedtopLeft.x    ) - heading;
 	float angleBottomRight = atanf(adjustedbottomRight.y / adjustedbottomRight.x) - heading;
 	float angleBottomLeft  = atanf(adjustedbottomLeft.y  / adjustedbottomLeft.x ) - heading;
 
 	adjustedtopRight = { 
-		sin(angleTopRight) * dist + tempPos->x, 
-		cos(angleTopRight) * dist + tempPos->y 
+		sinf(angleTopRight) * dist + tempPos->x, 
+		cosf(angleTopRight) * dist + tempPos->y 
 	};
 
 	adjustedtopLeft = { 
-		sin(angleTopLeft) * dist + tempPos->x,
-		cos(angleTopLeft) * dist + tempPos->y
+		sinf(angleTopLeft) * dist + tempPos->x,
+		cosf(angleTopLeft) * dist + tempPos->y
 	};
 
 	adjustedbottomRight = {
-		sin(angleBottomRight) * -dist + tempPos->x,
-		cos(angleBottomRight) * -dist + tempPos->y
+		sinf(angleBottomRight) * -dist + tempPos->x,
+		cosf(angleBottomRight) * -dist + tempPos->y
 	};
 	
 	adjustedbottomLeft = {
-		sin(angleBottomLeft) * -dist + tempPos->x,
-		cos(angleBottomLeft) * -dist + tempPos->y
+		sinf(angleBottomLeft) * -dist + tempPos->x,
+		cosf(angleBottomLeft) * -dist + tempPos->y
 	};
 
 

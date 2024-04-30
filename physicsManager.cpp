@@ -1,12 +1,5 @@
 #include "PhysicsManager.h"
 
-PhysicsManager::PhysicsManager() {
-
-}
-
-PhysicsManager::~PhysicsManager() {
-
-}
 
 void PhysicsManager::addObject(Physics* object) {
 	objects.push_back(object);

@@ -21,7 +21,8 @@ void Person::Render(SDL_Renderer* renderer) {
 	}
 
 	SetRenderColor(renderer, color);
-	SDL_RenderDrawRectF(renderer, (SDL_FRect*)pos);
+
+	SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
 }
 
 void Person::applyPosition(float* move) {

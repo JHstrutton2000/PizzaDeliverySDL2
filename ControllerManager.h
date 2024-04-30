@@ -3,8 +3,6 @@
 
 class ControllerManager {
 public:
-	ControllerManager();
-	~ControllerManager();
 	void AssignControlledObject(Physics* setObject);
 	void keyDown(SDL_KeyboardEvent* key);
 	void keyUp(SDL_KeyboardEvent* key);

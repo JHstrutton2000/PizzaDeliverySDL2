@@ -4,9 +4,6 @@
 
 class PhysicsManager{
 public:
-	PhysicsManager();
-	~PhysicsManager();
-
 	void update();
 	void addObject(Physics* object);
 private:
