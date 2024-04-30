@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include <iostream>
 
-#include "RenderObject.h"
+#include "RenderManager.h"
 #include "ControllerManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"

@@ -26,7 +26,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="physicsManager.cpp" />
-    <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h" />
@@ -37,7 +37,7 @@
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
     <ClInclude Include="Rendered.hpp" />
-    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RenderManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
