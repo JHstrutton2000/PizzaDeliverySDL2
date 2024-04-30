@@ -9,8 +9,6 @@ public:
 
 	void update();
 	void addObject(Physics* object);
-	Physics* nearestInteractable(Physics* object);
-
 private:
 	std::vector<Physics*> objects;
 };

@@ -1,5 +1,6 @@
 #include "ControllerManager.h"
 #include "physicsManager.h"
+#include "InteractableManager.h"
 
 ControllerManager::ControllerManager() {
 
@@ -69,7 +70,7 @@ void ControllerManager::keyDown(SDL_KeyboardEvent* key) {
 					break;
 				}
 
-				Physics* nearestInteractable = physicsManager->nearestInteractable(object);
+				Physics* nearestInteractable = interactableManager->nearestInteractable(object);
 
 				if (nearestInteractable) {
 					nearestInteractable->interact(object);
