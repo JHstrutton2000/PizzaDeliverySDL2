@@ -9,8 +9,8 @@ public:
 
 	void Render(SDL_Renderer* renderer);
 
-	void interact(Physics* object) override;
-	bool interactable() override;
+	//void interact(Physics* object) override;
+	//bool interactable() override;
 
 private:
 	SDL_FRect* doorPos;

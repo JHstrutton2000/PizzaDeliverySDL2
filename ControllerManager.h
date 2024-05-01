@@ -1,16 +1,16 @@
 #include <SDL.h>
-#include "Physics.hpp"
+#include "Controllable.hpp"
 
 class ControllerManager {
 public:
-	void AssignControlledObject(Physics* setObject);
+	void AssignControlledObject(Controllable* setObject);
 	void keyDown(SDL_KeyboardEvent* key);
 	void keyUp(SDL_KeyboardEvent* key);
 
 	void update();
 
 private:
-	Physics* object;
+	Controllable* object;
 	bool w_down = false;
 	bool s_down = false;
 	bool a_down = false;

@@ -1,6 +1,6 @@
 #include "InteractableManager.h"
 
-Physics* InteractableManager::nearestInteractable(Physics* object) {
+Controllable* InteractableManager::nearestInteractable(Controllable* object) {
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i] == object || !objects[i]->interactable() || objects[i]->disabled) {
 			continue;
@@ -14,7 +14,7 @@ Physics* InteractableManager::nearestInteractable(Physics* object) {
 	return nullptr;
 }
 
-void InteractableManager::addObject(Physics* object) {
+void InteractableManager::addObject(Controllable* object) {
 	objects.push_back(object);
 }
 

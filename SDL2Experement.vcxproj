@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Controllable.hpp" />
     <ClCompile Include="ControllerManager.cpp" />
     <ClCompile Include="InteractableManager.cpp" />
     <ClCompile Include="main.cpp" />

@@ -1,9 +1,9 @@
 #include <SDL.h>
 #include "Rendered.hpp"
-#include "Physics.hpp"
+#include "Controllable.hpp"
 #include <string>
 
-class Car : public Rendered, public Physics{
+class Car : public Rendered, public Controllable{
 public:
 	Car(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x20, 0x20, 0x00 });
 	~Car();
@@ -12,7 +12,7 @@ public:
 	void applyPosition(float* move) override;
 	float* getPosition() override;
 
-	void interact(Physics* object) override;
+	void interact(Controllable* object) override;
 	bool interactable() override;
 	bool canInteract() override;
 private:
@@ -21,5 +21,5 @@ private:
 	SDL_FPoint bottomRight;
 	SDL_FPoint bottomLeft;
 
-	Physics* driver;
+	Controllable* driver;
 };

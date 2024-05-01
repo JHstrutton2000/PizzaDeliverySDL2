@@ -38,10 +38,10 @@ void Building::Render(SDL_Renderer* renderer) {
 
 }
 
-void Building::interact(Physics* object) {
-
-}
-
-bool Building::interactable() {
-	return true;
-}
+//void Building::interact(Physics* object) {
+//
+//}
+//
+//bool Building::interactable() {
+//	return true;
+//}

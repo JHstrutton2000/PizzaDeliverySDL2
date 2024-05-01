@@ -92,7 +92,7 @@ float* Car::getPosition() {
 }
 
 //Something wants to interact with me.
-void Car::interact(Physics* object) {
+void Car::interact(Controllable* object) {
 	controllerManager->AssignControlledObject(this);
 	driver = object;
 	driver->disabled = true;

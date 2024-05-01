@@ -35,7 +35,7 @@ void Person::applyPosition(float* move) {
 }
 
 //something wants to interact with you.
-void Person::interact(Physics* object) {
+void Person::interact(Controllable* object) {
 
 }
 

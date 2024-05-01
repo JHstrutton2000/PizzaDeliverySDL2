@@ -27,9 +27,6 @@ protected:
 public:
 	bool disabled = false;
 
-	virtual bool interactable() { return false; }
-	virtual bool canInteract() { return false; }
-
 	float distance(float* pos) {
 		float* curPos = getPosition();
 
@@ -40,7 +37,6 @@ public:
 		return NULL;
 	}
 
-	virtual void interact(Physics* object) { return; }
 	virtual float* getPosition() { return nullptr; }
 
 	virtual void setPosition(float* pos) {

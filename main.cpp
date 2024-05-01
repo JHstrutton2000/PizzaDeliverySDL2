@@ -50,7 +50,7 @@ int main(int argc, char* args[]) {
     interactableManager = new InteractableManager();
     interactableManager->addObject(car);
     interactableManager->addObject(person);
-    interactableManager->addObject(building);
+    //interactableManager->addObject(building);
 
     int count = 0;
     while (!quit) {

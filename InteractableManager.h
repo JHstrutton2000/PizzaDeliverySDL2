@@ -1,12 +1,12 @@
 #include "vector"
-#include "Physics.hpp"
+#include "Controllable.hpp"
 
 class InteractableManager {
 public:
-	void addObject(Physics* object);
-	Physics* nearestInteractable(Physics* object);
+	void addObject(Controllable* object);
+	Controllable* nearestInteractable(Controllable* object);
 private:
-	std::vector<Physics*> objects;
+	std::vector<Controllable*> objects;
 };
 
 extern InteractableManager* interactableManager;
