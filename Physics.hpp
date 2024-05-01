@@ -15,6 +15,11 @@ protected:
 		memset(Acceleration, 0x00, size);
 	}
 
+	~Physics() {
+		delete Velocity;
+		delete Acceleration;
+	}
+
 	float maxVelocity = 1;
 	float maxAcceleration = 1;
 	float drag = 0.9f;
@@ -39,7 +44,7 @@ public:
 
 	virtual float* getPosition() { return nullptr; }
 
-	virtual void setPosition(float* pos) {
+	void setPosition(float* pos) {
 		float* curPos = getPosition();
 
 		if (curPos && pos) {

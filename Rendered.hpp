@@ -7,6 +7,11 @@
 
 class Rendered {
 protected:
+	~Rendered() {
+		delete pos;
+		delete rot;
+		delete color;
+	}
 	void* pos;
 	float* rot;
 	SDL_Color* color;

@@ -16,8 +16,6 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 }
 
 Car::~Car() {
-	delete pos;
-	delete color;
 }
 
 void Car::Render(SDL_Renderer* renderer) {

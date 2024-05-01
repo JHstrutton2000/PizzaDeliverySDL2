@@ -9,6 +9,7 @@
 #include "Car.h"
 #include "Person.h"
 #include "Building.h"
+#include "Pizza.h"
 
 #define PhysicsUpdate 10
 
@@ -35,10 +36,15 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 400, 200 }
     );
 
+    Pizza* pizza = new Pizza(
+        new SDL_FRect{ 500, 500 }
+    );
+
     renderManager = new RenderManager();
     renderManager->addObject(car);
     renderManager->addObject(person);
     renderManager->addObject(building);
+    renderManager->addObject(pizza);
 
     physicsManager = new PhysicsManager();
     physicsManager->addObject(car);
@@ -50,7 +56,7 @@ int main(int argc, char* args[]) {
     interactableManager = new InteractableManager();
     interactableManager->addObject(car);
     interactableManager->addObject(person);
-    //interactableManager->addObject(building);
+    interactableManager->addObject(building);
 
     int count = 0;
     while (!quit) {
