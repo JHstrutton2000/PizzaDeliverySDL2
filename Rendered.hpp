@@ -18,7 +18,8 @@ protected:
 	SDL_Renderer* renderer;
 	int stage = 0;
 public:
-	virtual void Render(SDL_Renderer* renderer) { return; }
+	virtual void Render(SDL_Renderer* renderer, int stage) { return; }
+	virtual void RenderUI(SDL_Renderer* renderer) { return; }
 	virtual int getStage() { return stage; }
 };
 

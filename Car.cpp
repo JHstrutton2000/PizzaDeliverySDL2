@@ -1,6 +1,10 @@
 #include "Car.h"
 #include "ControllerManager.h"
 
+#include "RenderManager.h"
+#include "physicsManager.h"
+#include "InteractableManager.h"
+
 Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 	_pos->w = 20;
 	_pos->h = 40;
@@ -13,12 +17,16 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 	maxVelocity = 2;
 
 	stage = 2;
+
+	renderManager->addObject(this);
+	physicsManager->addObject(this);
+	interactableManager->addObject(this);
 }
 
 Car::~Car() {
 }
 
-void Car::Render(SDL_Renderer* renderer) {
+void Car::Render(SDL_Renderer* renderer, int stage) {
 	if (color == nullptr) {
 		return;
 	}

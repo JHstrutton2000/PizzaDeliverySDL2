@@ -15,11 +15,13 @@ public:
 
 	void render();
 	void addObject(Rendered* object);
+	void addUIObject(Rendered* object);
 
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::vector<Rendered*> objects;
+	std::vector<Rendered*> uiObjects;
 	int maxStage = 0;
 };
 

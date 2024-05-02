@@ -8,7 +8,7 @@ public:
 	Car(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x20, 0x20, 0x00 });
 	~Car();
 
-	void Render(SDL_Renderer* renderer);
+	void Render(SDL_Renderer* renderer, int stage);
 	void applyPosition(float* move) override;
 	float* getPosition() override;
 

@@ -27,6 +27,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="physicsManager.cpp" />
+    <ClCompile Include="Pizza.cpp" />
     <ClCompile Include="RenderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -34,9 +35,12 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="ControllerManager.h" />
     <ClInclude Include="InteractableManager.h" />
+    <ClInclude Include="Inventory.hpp" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
+    <ClInclude Include="Pickup.hpp" />
+    <ClInclude Include="Pizza.h" />
     <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderManager.h" />
   </ItemGroup>

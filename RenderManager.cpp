@@ -30,21 +30,27 @@ void RenderManager::render() {
 		for (int i = 0; i < objects.size(); i++) {
 			int curStage = objects[i]->getStage();
 
-			if (curStage = maxStage) {
+			if (curStage > maxStage) {
 				maxStage = curStage;
 			}
 
-			if (curStage == stage) {
-				objects[i]->Render(renderer);
-			}
+			objects[i]->Render(renderer, stage);
 		}
 	}
 
+	for (int i = 0; i < uiObjects.size(); i++) {
+		objects[i]->RenderUI(renderer);
+	}
+	
 	SDL_RenderPresent(renderer);
 }
 
 void RenderManager::addObject(Rendered* object) {
 	objects.push_back(object);
+}
+
+void RenderManager::addUIObject(Rendered* object) {
+	uiObjects.push_back(object);
 }
 
 RenderManager* renderManager = nullptr;

@@ -24,6 +24,11 @@ int main(int argc, char* args[]) {
 
     SDL_Event event;
 
+    renderManager = new RenderManager();
+    physicsManager = new PhysicsManager();
+    controllerManager = new ControllerManager();
+    interactableManager = new InteractableManager();
+
     Car* car = new Car(
         new SDL_FRect{ 100, 100 }
     );
@@ -40,23 +45,16 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 500, 500 }
     );
 
-    renderManager = new RenderManager();
-    renderManager->addObject(car);
-    renderManager->addObject(person);
-    renderManager->addObject(building);
-    renderManager->addObject(pizza);
+    renderManager->addUIObject(person);
 
-    physicsManager = new PhysicsManager();
-    physicsManager->addObject(car);
-    physicsManager->addObject(person);
 
-    controllerManager = new ControllerManager();
+
     controllerManager->AssignControlledObject(person);
 
-    interactableManager = new InteractableManager();
-    interactableManager->addObject(car);
-    interactableManager->addObject(person);
-    interactableManager->addObject(building);
+
+
+    person->pickup(pizza);
+
 
     int count = 0;
     while (!quit) {

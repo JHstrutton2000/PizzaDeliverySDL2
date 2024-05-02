@@ -1,5 +1,9 @@
 #include "Building.h"
 
+#include "RenderManager.h"
+#include "physicsManager.h"
+#include "InteractableManager.h"
+
 Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
 	_pos->h = 100;
@@ -13,6 +17,9 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	//yardPos = new SDL_FRect{ _pos->x - 10, _pos->y -10, 120, 120 };
 
 	stage = 3;
+
+	interactableManager->addObject(this);
+	renderManager->addObject(this);
 }
 Building::~Building() {
 	//delete yardPos;
@@ -20,7 +27,7 @@ Building::~Building() {
 }
 
 
-void Building::Render(SDL_Renderer* renderer) {
+void Building::Render(SDL_Renderer* renderer, int stage) {
 	if (color == nullptr) {
 		return;
 	}
