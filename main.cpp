@@ -31,9 +31,9 @@ int main(int argc, char* args[]) {
     controllerManager = new ControllerManager();
     interactableManager = new InteractableManager();
 
-    Car* car = new Car(
-        new SDL_FRect{ 100, 100 }
-    );
+    //Car* car = new Car(
+    //    new SDL_FRect{ 100, 100 }
+    //);
 
     Person* person = new Person(
         new SDL_FRect{ 200, 100 }
@@ -43,9 +43,9 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 400, 200 }
     );
 
-    Pizza* pizza = new Pizza(
-        new SDL_FRect{ 500, 500 }
-    );
+    //Pizza* pizza = new Pizza(
+    //    new SDL_FRect{ 500, 500 }
+    //);
 
     renderManager->addUIObject(person);
 
@@ -80,9 +80,7 @@ int main(int argc, char* args[]) {
         if (count >= PhysicsUpdate) {
             physicsManager->update();
             controllerManager->update();
-            //collisionManager->update();
-
-            person->colliding(pizza);
+            collisionManager->update();
 
             count = 0;
         }

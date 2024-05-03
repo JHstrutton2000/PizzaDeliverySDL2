@@ -3,6 +3,7 @@
 #include "RenderManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
+#include "CollisionManager.h"
 
 Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
@@ -19,13 +20,16 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	stage = 3;
 
 	interactableManager->addObject(this);
+	collisionManager->addObject(this);
 	renderManager->addObject(this);
 
 	collisionRadius = (_pos->h);
+	collideable = true;
 }
 Building::~Building() {
 
 	interactableManager->removeObject(this);
+	collisionManager->removeObject(this);
 	renderManager->removeObject(this);
 
 	//delete yardPos;
@@ -38,16 +42,14 @@ void Building::Render(SDL_Renderer* renderer, int stage) {
 		return;
 	}
 
-
-	/*SDL_SetRenderDrawColor(renderer, 0, 200, 0, 0);
-	SDL_RenderFillRectF(renderer, yardPos);*/
+	// SDL_SetRenderDrawColor(renderer, 0, 200, 0, 0);
+	// SDL_RenderFillRectF(renderer, yardPos);
 
 	SetRenderColor(renderer, color);
 	SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderFillRectF(renderer, doorPos);
-
 
 }
 
@@ -57,4 +59,15 @@ void Building::interact(Controllable* object) {
 
 bool Building::interactable() {
 	return true;
+}
+
+float* Building::getPosition()
+{
+	return (float*)pos;
+}
+
+float* Building::getCenter() {
+	SDL_FRect* tempPos = (SDL_FRect*)pos;
+
+	return new float[4] {tempPos->x + tempPos->w/2, tempPos->y + tempPos->h/2};
 }

@@ -11,7 +11,8 @@ public:
 
 	void interact(Controllable* object) override;
 	bool interactable() override;
-
+	float* getPosition() override;
+	float* getCenter() override;
 private:
 	SDL_FRect* doorPos;
 	//SDL_FRect* yardPos;

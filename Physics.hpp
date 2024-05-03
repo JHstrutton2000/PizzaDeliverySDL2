@@ -42,11 +42,26 @@ public:
 		return NULL;
 	}
 
+	float distanceFromCenter(float* pos) {
+		float* curPos = getCenter();
+
+		if (curPos && pos) {
+			float pow1 = pow(pos[0] - curPos[0], 2);
+			float pow2 = pow(pos[1] - curPos[1], 2);
+
+			float dist = sqrtf(pow1 + pow2);
+			return dist;
+		}
+
+		return NULL;
+	}
+
 	//void scaleVelocity(float scaler) {
 	//	Physics::multiply(Velocity, scaler);
 	//}
 
 	virtual float* getPosition() { return nullptr; }
+	virtual float* getCenter() { return getPosition(); }
 
 	void setPosition(float* pos) {
 		float* curPos = getPosition();

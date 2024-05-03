@@ -40,7 +40,6 @@ void Person::Render(SDL_Renderer* renderer, int stage) {
 
 	if (this->stage == stage) {
 		SetRenderColor(renderer, color);
-
 		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
 	}
 } 
@@ -80,7 +79,7 @@ bool Person::canInteract() {
 }
 
 void Person::onCollide(Collider* object) {
-	Pickup* item = reinterpret_cast<Pickup*>(object);
+	Pickup* item = dynamic_cast<Pickup*>(object);
 
 	if (item) {
 		pickup(item);

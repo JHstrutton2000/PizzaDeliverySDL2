@@ -6,7 +6,10 @@
 class Collider: public Physics {
 public:
 	bool colliding(Collider* object) {
-		if (object->distance(getPosition()) <= ((object->getCollisionRadius() + collisionRadius) / 2)) {
+		float dist = object->distanceFromCenter(getCenter());
+		float minRadius = (object->getCollisionRadius() + collisionRadius) / 2;
+
+		if (dist <= minRadius) {
 			if (object->runsCollide()) {
 				onCollide(object);
 			}
@@ -31,6 +34,9 @@ public:
 	}
 
 	void reflect(int scaler) {
+		Acceleration[0] *= -1;
+		Acceleration[1] *= -1;
+
 		Velocity[0] *= -scaler * collisionRadius;// -(2 * Velocity[0] + 2);
 		Velocity[1] *= -scaler * collisionRadius;// -(2 * Velocity[1] + 2);
 	}
