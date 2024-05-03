@@ -5,6 +5,7 @@
 #include "ControllerManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
+#include "collisionManager.h"
 
 #include "Car.h"
 #include "Person.h"
@@ -26,6 +27,7 @@ int main(int argc, char* args[]) {
 
     renderManager = new RenderManager();
     physicsManager = new PhysicsManager();
+    collisionManager = new CollisionManager();
     controllerManager = new ControllerManager();
     interactableManager = new InteractableManager();
 
@@ -48,12 +50,10 @@ int main(int argc, char* args[]) {
     renderManager->addUIObject(person);
 
 
-
     controllerManager->AssignControlledObject(person);
 
 
-
-    person->pickup(pizza);
+    //person->pickup(pizza);
 
 
     int count = 0;
@@ -80,6 +80,9 @@ int main(int argc, char* args[]) {
         if (count >= PhysicsUpdate) {
             physicsManager->update();
             controllerManager->update();
+            //collisionManager->update();
+
+            person->colliding(pizza);
 
             count = 0;
         }

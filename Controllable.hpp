@@ -1,9 +1,9 @@
 #ifndef Controllable_HPP
 #define Controllable_HPP
 
-#include "Physics.hpp"
+#include "Collider.hpp"
 
-class Controllable: public Physics {
+class Controllable: public Collider {
 public:
 	virtual bool interactable() { return false; }
 	virtual bool canInteract() { return false; }

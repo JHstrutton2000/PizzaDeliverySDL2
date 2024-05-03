@@ -15,4 +15,6 @@ public:
 	void interact(Controllable* object) override;
 	float* getPosition() override;
 	bool canInteract() override;
+
+	void onCollide(Collider* object) override;
 };

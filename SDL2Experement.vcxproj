@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Controllable.hpp" />
     <ClCompile Include="ControllerManager.cpp" />
     <ClCompile Include="InteractableManager.cpp" />
@@ -33,6 +34,8 @@
   <ItemGroup>
     <ClInclude Include="Building.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="ControllerManager.h" />
     <ClInclude Include="InteractableManager.h" />
     <ClInclude Include="Inventory.hpp" />

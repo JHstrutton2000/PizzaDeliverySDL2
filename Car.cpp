@@ -21,6 +21,8 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 	renderManager->addObject(this);
 	physicsManager->addObject(this);
 	interactableManager->addObject(this);
+
+	collisionRadius = (_pos->h);
 }
 
 Car::~Car() {

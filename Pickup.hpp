@@ -1,9 +1,9 @@
 #ifndef Pickup_HPP
 #define Pickup_HPP
 
-#include "Physics.hpp"
+#include "Collider.hpp"
 
-class Pickup: public Physics {
+class Pickup: public Collider {
 public:
 	virtual bool use() { return false; }
 	float getPickupDistance() { return pickupDistance; }

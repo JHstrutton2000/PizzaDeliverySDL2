@@ -1,5 +1,6 @@
 #include "Pizza.h"
 #include "renderManager.h"
+#include "collisionManager.h"
 
 Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;
@@ -16,6 +17,10 @@ Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 	pickupDistance = 5;
 
 	renderManager->addObject(this);
+	collisionManager->addObject(this);
+
+	collisionRadius = (_pos->h);
+	collideable = true;
 }
 
 Pizza::~Pizza() {

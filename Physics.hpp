@@ -42,6 +42,10 @@ public:
 		return NULL;
 	}
 
+	//void scaleVelocity(float scaler) {
+	//	Physics::multiply(Velocity, scaler);
+	//}
+
 	virtual float* getPosition() { return nullptr; }
 
 	void setPosition(float* pos) {

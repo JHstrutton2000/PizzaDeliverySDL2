@@ -3,6 +3,7 @@
 #include "RenderManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
+#include "CollisionManager.h"
 
 Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;
@@ -19,6 +20,10 @@ Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 	renderManager->addObject(this);
 	physicsManager->addObject(this);
 	interactableManager->addObject(this);
+	collisionManager->addObject(this);
+
+	collisionRadius = (_pos->h);
+	collideable = true;
 }
 
 Person::~Person() {
@@ -69,4 +74,15 @@ float* Person::getPosition() {
 bool Person::canInteract() {
 	//exit to person.
 	return true;
+}
+
+void Person::onCollide(Collider* object) {
+	Pickup* item = reinterpret_cast<Pickup*>(object);
+
+	if (item) {
+		pickup(item);
+	}
+	else {
+		reflect(2);
+	}
 }

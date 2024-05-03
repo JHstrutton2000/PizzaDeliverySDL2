@@ -20,6 +20,8 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 
 	interactableManager->addObject(this);
 	renderManager->addObject(this);
+
+	collisionRadius = (_pos->h);
 }
 Building::~Building() {
 	//delete yardPos;

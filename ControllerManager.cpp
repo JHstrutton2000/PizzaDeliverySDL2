@@ -1,6 +1,7 @@
 #include "ControllerManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
+#include "CollisionManager.h"
 
 void ControllerManager::AssignControlledObject(Controllable* setObject) {
 	object = setObject;

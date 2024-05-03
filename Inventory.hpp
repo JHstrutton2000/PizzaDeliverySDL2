@@ -35,6 +35,8 @@ private:
 	std::vector<Pickup*> items;
 
 	void removeItem(int itemIndex) {
+		delete items[itemIndex];
+
 		items.erase(items.begin() + itemIndex);
 	}
 
