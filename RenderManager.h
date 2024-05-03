@@ -17,6 +17,9 @@ public:
 	void addObject(Rendered* object);
 	void addUIObject(Rendered* object);
 
+	void removeObject(Rendered* object);
+	void removeUIObject(Rendered* object);
+
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;

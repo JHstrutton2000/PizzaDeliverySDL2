@@ -53,4 +53,12 @@ void RenderManager::addUIObject(Rendered* object) {
 	uiObjects.push_back(object);
 }
 
+void RenderManager::removeObject(Rendered* object) {
+	objects.erase(std::remove(objects.begin(), objects.end(), object), objects.end());
+}
+
+void RenderManager::removeUIObject(Rendered* object) {
+	uiObjects.erase(std::remove(uiObjects.begin(), uiObjects.end(), object), uiObjects.end());
+}
+
 RenderManager* renderManager = nullptr;

@@ -26,6 +26,9 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 }
 
 Car::~Car() {
+	renderManager->removeObject(this);
+	physicsManager->removeObject(this);
+	interactableManager->removeObject(this);
 }
 
 void Car::Render(SDL_Renderer* renderer, int stage) {

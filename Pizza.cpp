@@ -24,7 +24,8 @@ Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 }
 
 Pizza::~Pizza() {
-
+	renderManager->removeObject(this);
+	collisionManager->removeObject(this);
 }
 
 void Pizza::Render(SDL_Renderer* renderer, int stage) {

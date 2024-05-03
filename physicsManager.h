@@ -5,6 +5,7 @@
 class PhysicsManager{
 public:
 	void update();
+	void removeObject(Physics* object);
 	void addObject(Physics* object);
 private:
 	std::vector<Physics*> objects;

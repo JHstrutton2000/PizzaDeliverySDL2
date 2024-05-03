@@ -27,7 +27,10 @@ Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 }
 
 Person::~Person() {
-
+	renderManager->removeObject(this);
+	physicsManager->removeObject(this);
+	interactableManager->removeObject(this);
+	collisionManager->removeObject(this);
 }
 
 void Person::Render(SDL_Renderer* renderer, int stage) {
