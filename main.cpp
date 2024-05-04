@@ -43,15 +43,26 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 200, 100 }
     );
 
-    Pizza* pizza = new Pizza(
-        new SDL_FRect{ 500, 500 }
-    );
-
     renderManager->addUIObject(player);
     controllerManager->AssignObject(player);
-
     questManager->assignObject(player);
-    questManager->assignQuest(pizza);
+
+    new Pizza(
+        new SDL_FRect{ 100, 20 }
+    );
+
+    new Pizza(
+        new SDL_FRect{ 150, 20}
+    );
+
+    new Pizza(
+        new SDL_FRect{ 200, 20 }
+    );
+
+    new Pizza(
+        new SDL_FRect{ 250, 20 }
+    );
+
 
 
     //player->addQuest(pizza, building, questTypes::pickup);

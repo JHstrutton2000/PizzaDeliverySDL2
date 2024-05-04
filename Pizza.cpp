@@ -21,6 +21,7 @@ Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 
 	renderManager->addObject(this);
 	collisionManager->addObject(this);
+	questManager->assignQuest(this);
 
 	collisionRadius = (_pos->h);
 	collideable = true;

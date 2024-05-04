@@ -15,6 +15,7 @@ public:
 	void interact(Controllable* object) override;
 	bool interactable() override;
 	bool canInteract() override;
+	void onCollide(Collider* object) override;
 private:
 	SDL_FPoint topRight;
 	SDL_FPoint topLeft;

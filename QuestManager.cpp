@@ -4,6 +4,15 @@
 
 QuestManager::QuestManager() {
 	addDestination(new Building(
+		new SDL_FRect{ 50, 200 }
+	));
+
+	addDestination(new Building(
+		new SDL_FRect{ 50, 400 }
+	));
+
+
+	addDestination(new Building(
 		new SDL_FRect{ 200, 200 }
 	));
 
@@ -11,12 +20,31 @@ QuestManager::QuestManager() {
 		new SDL_FRect{ 200, 400 }
 	));
 
+
 	addDestination(new Building(
-		new SDL_FRect{ 600, 200 }
+		new SDL_FRect{ 350, 200 }
 	));
 
 	addDestination(new Building(
-		new SDL_FRect{ 600, 400 }
+		new SDL_FRect{ 350, 400 }
+	));
+
+
+	addDestination(new Building(
+		new SDL_FRect{ 500, 200 }
+	));
+
+	addDestination(new Building(
+		new SDL_FRect{ 500, 400 }
+	));
+
+
+	addDestination(new Building(
+		new SDL_FRect{ 650, 200 }
+	));
+
+	addDestination(new Building(
+		new SDL_FRect{ 650, 400 }
 	));
 }
 

@@ -4,6 +4,7 @@
 #include "RenderManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
+#include "CollisionManager.h"
 
 Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 	_pos->w = 20;
@@ -13,21 +14,24 @@ Car::Car(SDL_FRect* _pos, SDL_Color* _color){
 	rot = new float(45.0f);
 	color = _color;
 
-	maxAcceleration = 2;
-	maxVelocity = 2;
+	maxAcceleration = 0.5;
+	maxVelocity = 1;
 
 	stage = 2;
 
 	renderManager->addObject(this);
 	physicsManager->addObject(this);
+	collisionManager->addObject(this);
 	interactableManager->addObject(this);
 
 	collisionRadius = (_pos->h);
+	collideable = true;
 }
 
 Car::~Car() {
 	renderManager->removeObject(this);
 	physicsManager->removeObject(this);
+	collisionManager->removeObject(this);
 	interactableManager->removeObject(this);
 }
 
@@ -122,4 +126,8 @@ bool Car::canInteract() {
 	driver = nullptr;
 
 	return false; 
+}
+
+void Car::onCollide(Collider* object) {
+	reflect(1);
 }
