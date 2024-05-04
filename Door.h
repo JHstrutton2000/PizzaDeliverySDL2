@@ -7,7 +7,7 @@ class Door: public Rendered, public Controllable {
 public:
 	Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos);
 	~Door();
-	void Render(SDL_Renderer* renderer, int stage);
+	void Render(SDL_Renderer* renderer, int drawStage);
 
 	float* getPosition() override;
 	float* getCenter() override;

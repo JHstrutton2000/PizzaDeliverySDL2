@@ -25,7 +25,7 @@ int main(int argc, char* args[]) {
     SDL_Window* window;
     SDL_Renderer* renderer;
     
-    window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Pizza Delivery", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
         std::cerr << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
         return 0;
@@ -45,13 +45,9 @@ int main(int argc, char* args[]) {
     controllerManager = new ControllerManager();
 
     Scene* mainScene = new Scene(window, renderer);
-    Scene* indoor = new Scene(window, renderer);
+    Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
 
-    Door* door1 = new Door(mainScene, indoor, new SDL_FRect{ 500, 100, 20, 20 });
-    Door* door2 = new Door(indoor, mainScene, new SDL_FRect{ 100, 100, 20, 20 });
-
-    door1->setOutDoor(door2);
-    door2->setOutDoor(door1);
+    Door* indoorDoor= new Door(indoor, mainScene, new SDL_FRect{ 100, 100, 20, 20 });
     
     sceneManager->setActiveScene(mainScene);
 
@@ -65,42 +61,50 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 200, 100 }
     );
 
-    //for (float i = 50; i < 700; i+=200) {
-    //    mainScene->questManager->addDestination(new Building(
-    //        mainScene,
-    //        new SDL_FRect{ i, 200 }
-    //    ));
+    for (float i = 50; i < 700; i+=200) {
+        Door* door1 = new Door(mainScene, indoor, new SDL_FRect{ i + 40, 280, 20, 20 });
 
-    //    mainScene->questManager->addDestination(new Building(
-    //        mainScene,
-    //        new SDL_FRect{ i, 400 }
-    //    ));
-    //}
+        mainScene->questManager->addDestination(new Building(
+            mainScene,
+            new SDL_FRect{ i, 200 }
+        ));
+
+        door1->setOutDoor(indoorDoor);
+        indoorDoor->setOutDoor(door1);
+
+        Door * door2 = new Door(mainScene, indoor, new SDL_FRect{ i + 40, 480, 20, 20 });
+        mainScene->questManager->addDestination(new Building(
+            mainScene,
+            new SDL_FRect{ i, 400 }
+        ));
+
+        door2->setOutDoor(indoorDoor);
+    }
 
     mainScene->renderManager->addUIObject(player);
     mainScene->questManager->assignObject(player);
 
     controllerManager->AssignObject(player);
 
-    //new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 100, 20 }
-    //);
+    new Pizza(
+        mainScene,
+        new SDL_FRect{ 100, 20 }
+    );
 
-    //new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 150, 20}
-    //);
+    new Pizza(
+        mainScene,
+        new SDL_FRect{ 150, 20}
+    );
 
-    //new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 200, 20 }
-    //);
+    new Pizza(
+        mainScene,
+        new SDL_FRect{ 200, 20 }
+    );
 
-    //new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 250, 20 }
-    //);
+    new Pizza(
+        mainScene,
+        new SDL_FRect{ 250, 20 }
+    );
 
     int count = 0;
     while (!quit) {

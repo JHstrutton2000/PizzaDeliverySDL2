@@ -42,16 +42,17 @@ Building::~Building() {
 }
 
 
-void Building::Render(SDL_Renderer* renderer, int stage) {
+void Building::Render(SDL_Renderer* renderer, int drawStage) {
 	if (color == nullptr) {
 		return;
 	}
 
 	// SDL_SetRenderDrawColor(renderer, 0, 200, 0, 0);
 	// SDL_RenderFillRectF(renderer, yardPos);
-
-	SetRenderColor(renderer, color);
-	SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+	if (stage == drawStage) {
+		SetRenderColor(renderer, color);
+		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+	}
 }
 
 void Building::interact(Controllable* object) {

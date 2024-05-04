@@ -24,7 +24,7 @@ public:
 		scene->collisionManager->addObject(this);
 	}
 
-	void Render(SDL_Renderer* renderer, int stage) override;
+	void Render(SDL_Renderer* renderer, int drawStage) override;
 	void RenderUI(SDL_Renderer* renderer) override;
 
 	void applyPosition(float* move) override;

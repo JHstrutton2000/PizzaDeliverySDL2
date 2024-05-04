@@ -35,12 +35,12 @@ Person::~Person() {
 	scene->collisionManager->removeObject(this);
 }
 
-void Person::Render(SDL_Renderer* renderer, int stage) {
+void Person::Render(SDL_Renderer* renderer, int drawStage) {
 	if (disabled) {
 		return;
 	}
 
-	if (this->stage == stage) {
+	if (stage == drawStage) {
 		SetRenderColor(renderer, color);
 		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
 	}

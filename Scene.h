@@ -9,7 +9,7 @@
 
 class Scene {
 public:
-	Scene(SDL_Window* _window, SDL_Renderer* _renderer);
+	Scene(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Color* _color = new SDL_Color{ 0x00, 0x50, 0x00, 0x00 });
 	void update();
 	void render();
 

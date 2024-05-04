@@ -13,15 +13,19 @@ Door::Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos) {
 	curScene->collisionManager->addObject(this);
 
 	collisionRadius = _pos->w;
+
+	stage = 4;
 }
 
 Door::~Door() {
 
 }
 
-void Door::Render(SDL_Renderer* renderer, int stage){
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+void Door::Render(SDL_Renderer* renderer, int drawStage){
+	if (stage == drawStage) {
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+	}
 }
 
 float* Door::getPosition()

@@ -36,63 +36,65 @@ Car::~Car() {
 	scene->interactableManager->removeObject(this);
 }
 
-void Car::Render(SDL_Renderer* renderer, int stage) {
+void Car::Render(SDL_Renderer* renderer, int drawStage) {
 	if (color == nullptr) {
 		return;
 	}
 
-	SetRenderColor(renderer, color);
 
-	SDL_FRect* tempPos = (SDL_FRect*)pos;
+	if (stage == drawStage) {
+		SetRenderColor(renderer, color);
 
-	float w = tempPos->w / 2;
-	float h = tempPos->h / 2;
+		SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-	topLeft     = { tempPos->x - w, tempPos->y - h }; // top left
-	bottomLeft  = { tempPos->x - w, tempPos->y + h }; // bottom left
-	topRight    = { tempPos->x + w, tempPos->y - h }; // top right
-	bottomRight = { tempPos->x + w, tempPos->y + h }; // buttom right
+		float w = tempPos->w / 2;
+		float h = tempPos->h / 2;
 
-	float dist = sqrtf(pow(w/2, 2) + pow(h/2, 2));
+		topLeft = { tempPos->x - w, tempPos->y - h }; // top left
+		bottomLeft = { tempPos->x - w, tempPos->y + h }; // bottom left
+		topRight = { tempPos->x + w, tempPos->y - h }; // top right
+		bottomRight = { tempPos->x + w, tempPos->y + h }; // buttom right
 
-	//printf("velocity x: %.6f y: %.6f \n", Velocity[0], Velocity[1]);
+		float dist = sqrtf(pow(w / 2, 2) + pow(h / 2, 2));
 
-	SDL_FPoint adjustedtopRight    = {  w/2,  h/2 };
-	SDL_FPoint adjustedtopLeft     = { -w/2,  h/2 };
-	SDL_FPoint adjustedbottomRight = {  w/2, -h/2 };
-	SDL_FPoint adjustedbottomLeft  = { -w/2, -h/2 };
-	
-	float angleTopRight    = atanf(adjustedtopRight.y    / adjustedtopRight.x   ) - heading;
-	float angleTopLeft	    = atanf(adjustedtopLeft.y     / adjustedtopLeft.x    ) - heading;
-	float angleBottomRight = atanf(adjustedbottomRight.y / adjustedbottomRight.x) - heading;
-	float angleBottomLeft  = atanf(adjustedbottomLeft.y  / adjustedbottomLeft.x ) - heading;
+		//printf("velocity x: %.6f y: %.6f \n", Velocity[0], Velocity[1]);
 
-	adjustedtopRight = { 
-		sinf(angleTopRight) * dist + tempPos->x, 
-		cosf(angleTopRight) * dist + tempPos->y 
-	};
+		SDL_FPoint adjustedtopRight = { w / 2,  h / 2 };
+		SDL_FPoint adjustedtopLeft = { -w / 2,  h / 2 };
+		SDL_FPoint adjustedbottomRight = { w / 2, -h / 2 };
+		SDL_FPoint adjustedbottomLeft = { -w / 2, -h / 2 };
 
-	adjustedtopLeft = { 
-		sinf(angleTopLeft) * dist + tempPos->x,
-		cosf(angleTopLeft) * dist + tempPos->y
-	};
+		float angleTopRight = atanf(adjustedtopRight.y / adjustedtopRight.x) - heading;
+		float angleTopLeft = atanf(adjustedtopLeft.y / adjustedtopLeft.x) - heading;
+		float angleBottomRight = atanf(adjustedbottomRight.y / adjustedbottomRight.x) - heading;
+		float angleBottomLeft = atanf(adjustedbottomLeft.y / adjustedbottomLeft.x) - heading;
 
-	adjustedbottomRight = {
-		sinf(angleBottomRight) * -dist + tempPos->x,
-		cosf(angleBottomRight) * -dist + tempPos->y
-	};
-	
-	adjustedbottomLeft = {
-		sinf(angleBottomLeft) * -dist + tempPos->x,
-		cosf(angleBottomLeft) * -dist + tempPos->y
-	};
+		adjustedtopRight = {
+			sinf(angleTopRight) * dist + tempPos->x,
+			cosf(angleTopRight) * dist + tempPos->y
+		};
+
+		adjustedtopLeft = {
+			sinf(angleTopLeft) * dist + tempPos->x,
+			cosf(angleTopLeft) * dist + tempPos->y
+		};
+
+		adjustedbottomRight = {
+			sinf(angleBottomRight) * -dist + tempPos->x,
+			cosf(angleBottomRight) * -dist + tempPos->y
+		};
+
+		adjustedbottomLeft = {
+			sinf(angleBottomLeft) * -dist + tempPos->x,
+			cosf(angleBottomLeft) * -dist + tempPos->y
+		};
 
 
-	DrawLine(renderer, adjustedtopLeft, adjustedbottomLeft);
-	DrawLine(renderer, adjustedtopRight, adjustedbottomRight);
-	DrawLine(renderer, adjustedtopLeft, adjustedtopRight);
-	DrawLine(renderer, adjustedbottomLeft, adjustedbottomRight);
-
+		DrawLine(renderer, adjustedtopLeft, adjustedbottomLeft);
+		DrawLine(renderer, adjustedtopRight, adjustedbottomRight);
+		DrawLine(renderer, adjustedtopLeft, adjustedtopRight);
+		DrawLine(renderer, adjustedbottomLeft, adjustedbottomRight);
+	}
 	
 }
 

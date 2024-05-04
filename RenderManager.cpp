@@ -1,8 +1,9 @@
 #include "RenderManager.h"
 
-RenderManager::RenderManager(SDL_Window* _window, SDL_Renderer* _renderer) {
+RenderManager::RenderManager(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Color* _color) {
 	window = _window;
 	renderer = _renderer;
+	backgroundColor = _color;
 }
 
 void RenderManager::render() {
@@ -10,7 +11,7 @@ void RenderManager::render() {
 		return;
 	}
 
-	SDL_SetRenderDrawColor(renderer, 0x00, 0x50, 0x00, 0);
+	SetRenderColor(renderer, backgroundColor);
 	SDL_RenderClear(renderer);
 
 	for (int stage = 0; stage <= maxStage; stage++) {
