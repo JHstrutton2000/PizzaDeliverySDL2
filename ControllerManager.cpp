@@ -3,7 +3,7 @@
 #include "InteractableManager.h"
 #include "CollisionManager.h"
 
-void ControllerManager::AssignControlledObject(Controllable* setObject) {
+void ControllerManager::AssignObject(Controllable* setObject) {
 	object = setObject;
 }
 

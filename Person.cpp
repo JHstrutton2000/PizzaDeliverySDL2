@@ -75,6 +75,12 @@ float* Person::getPosition() {
 	return (float*)pos;
 }
 
+float* Person::getCenter() {
+	SDL_FRect* tempPos = (SDL_FRect*)pos;
+
+	return new float[2] {tempPos->x + tempPos->w / 2, tempPos->y + tempPos->h / 2};
+}
+
 bool Person::canInteract() {
 	//exit to person.
 	return true;

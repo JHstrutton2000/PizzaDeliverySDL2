@@ -1,7 +1,9 @@
 #include "Pizza.h"
 #include "renderManager.h"
 #include "collisionManager.h"
-#include "pickup.Types"
+#include "QuestManager.h"
+
+#include "pickupTypes.h"
 
 Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;
@@ -44,4 +46,12 @@ void Pizza::Render(SDL_Renderer* renderer, int stage) {
 
 float* Pizza::getPosition() {
 	return (float*)pos;
+}
+
+bool Pizza::use() {
+	disabled = false;
+
+	questManager->assignQuest(this);
+
+	return true; 
 }

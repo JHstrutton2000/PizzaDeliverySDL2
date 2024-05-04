@@ -15,6 +15,7 @@ public:
 	void applyPosition(float* move) override;
 	void interact(Controllable* object) override;
 	float* getPosition() override;
+	float* getCenter() override;
 	bool canInteract() override;
 
 	void onCollide(Collider* object) override;

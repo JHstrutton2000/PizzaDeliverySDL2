@@ -44,14 +44,15 @@
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
     <ClInclude Include="Pickup.hpp" />
-    <ClInclude Include="Pickup.types" />
+    <ClInclude Include="pickupTypes.h" />
     <ClInclude Include="Pizza.h" />
     <ClInclude Include="Quest.hpp" />
+    <ClInclude Include="QuestManager.h" />
     <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Quest.types" />
+    <None Include="questTypes.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

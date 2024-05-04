@@ -1,8 +1,9 @@
 #ifndef Quest_HPP
 #define Quest_HPP
 
+#include "SDL.h"
 #include "Physics.hpp";
-#include "Quest.types"
+#include "questTypes.h"
 #include <vector>
 
 
@@ -49,7 +50,7 @@ protected:
 			}
 
 			if (tempPos) {
-				SDL_FRect* pos = new SDL_FRect{ tempPos[0] + 2, tempPos[1] - tempPos[2] / 2, 5, 5 };
+				SDL_FRect* pos = new SDL_FRect{ tempPos[0] + tempPos[2] / 2 - 2, tempPos[1] - 10, 5, 5 };
 
 				SDL_SetRenderDrawColor(renderer, 20, 20, 20, 0x00);
 				SDL_RenderFillRectF(renderer, pos);

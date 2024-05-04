@@ -6,7 +6,7 @@
 #include "CollisionManager.h"
 
 #include "Person.h"
-#include "pickup.Types"
+#include "pickupTypes.h"
 
 Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
@@ -62,8 +62,6 @@ void Building::interact(Controllable* object) {
 
 	if (person) {
 		if (person->useItemType(pickupTypes::pizza)) {
-			
-			printf("used a pizza!!!");
 		}
 	}
 }
@@ -72,13 +70,12 @@ bool Building::interactable() {
 	return true;
 }
 
-float* Building::getPosition()
-{
+float* Building::getPosition() {
 	return (float*)pos;
 }
 
 float* Building::getCenter() {
 	SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-	return new float[4] {tempPos->x + tempPos->w/2, tempPos->y + tempPos->h/2};
+	return new float[2] {tempPos->x + tempPos->w/2, tempPos->y + tempPos->h/2};
 }

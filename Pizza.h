@@ -10,4 +10,5 @@ public:
 
 	void Render(SDL_Renderer* renderer, int stage);
 	float* getPosition();
+	bool use() override;
 };

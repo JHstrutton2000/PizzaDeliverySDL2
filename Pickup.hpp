@@ -2,7 +2,7 @@
 #define Pickup_HPP
 
 #include "Collider.hpp"
-#include "pickup.Types"
+#include "pickupTypes.h"
 
 class Pickup: public Collider{
 public:

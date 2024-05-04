@@ -104,7 +104,7 @@ float* Car::getPosition() {
 
 //Something wants to interact with me.
 void Car::interact(Controllable* object) {
-	controllerManager->AssignControlledObject(this);
+	controllerManager->AssignObject(this);
 	driver = object;
 	driver->disabled = true;
 }
@@ -114,7 +114,7 @@ bool Car::interactable() {
 }
 
 bool Car::canInteract() { 
-	controllerManager->AssignControlledObject(driver);
+	controllerManager->AssignObject(driver);
 	
 	driver->setPosition(getPosition());
 	driver->disabled = false;

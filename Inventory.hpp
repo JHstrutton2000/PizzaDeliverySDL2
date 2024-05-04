@@ -5,8 +5,8 @@
 #include "Pickup.hpp"
 #include "Quest.hpp"
 
-#include "pickup.Types"
-#include "quest.Types"
+#include "pickupTypes.h"
+#include "questTypes.h"
 
 class Inventory: public Quest {
 public:
@@ -20,7 +20,6 @@ public:
 	bool useItemType(pickupTypes type) {
 		for (int i = 0; i < items.size(); i++) {
 			if (items[i]->getPickupType() == type && items[i]->use()) {
-
 				removeQuest(items[i]);
 				removeItem(i);
 

@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <iostream>
 
+#include "QuestManager.h"
 #include "RenderManager.h"
 #include "ControllerManager.h"
 #include "physicsManager.h"
@@ -31,9 +32,12 @@ int main(int argc, char* args[]) {
     controllerManager = new ControllerManager();
     interactableManager = new InteractableManager();
 
-    //Car* car = new Car(
-    //    new SDL_FRect{ 100, 100 }
-    //);
+    questManager = new QuestManager();
+
+
+    Car* car = new Car(
+        new SDL_FRect{ 100, 100 }
+    );
 
     Person* player = new Person(
         new SDL_FRect{ 200, 100 }
@@ -43,14 +47,14 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 500, 500 }
     );
 
-    Building* building = new Building(
-        new SDL_FRect{ 400, 200 }
-    );
-
     renderManager->addUIObject(player);
-    controllerManager->AssignControlledObject(player);
+    controllerManager->AssignObject(player);
 
-    player->addQuest(pizza, building, questTypes::pickup);
+    questManager->assignObject(player);
+    questManager->assignQuest(pizza);
+
+
+    //player->addQuest(pizza, building, questTypes::pickup);
 
 
     //person->pickup(pizza);
