@@ -8,6 +8,9 @@ public:
 	virtual bool interactable() { return false; }
 	virtual bool canInteract() { return false; }
 	virtual void interact(Controllable* object) { return; }
+	float getInteractRadius() { return interactRadius; }
+protected:
+	float interactRadius = 25;
 };
 
 #endif //Controllable_HPP

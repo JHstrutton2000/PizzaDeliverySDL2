@@ -5,6 +5,9 @@
 #include "InteractableManager.h"
 #include "CollisionManager.h"
 
+#include "Person.h"
+#include "pickupTypes.hpp"
+
 Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
 	_pos->h = 100;
@@ -24,6 +27,7 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	renderManager->addObject(this);
 
 	collisionRadius = (_pos->h);
+	interactRadius = collisionRadius/2 + 20;
 	collideable = true;
 }
 Building::~Building() {
@@ -54,7 +58,13 @@ void Building::Render(SDL_Renderer* renderer, int stage) {
 }
 
 void Building::interact(Controllable* object) {
+	Inventory* inventory = dynamic_cast<Inventory*>(object);
 
+	if (inventory) {
+		if (inventory->useItemType(pickupTypes::pizza)) {
+			printf("used a pizza!!!");
+		}
+	}
 }
 
 bool Building::interactable() {

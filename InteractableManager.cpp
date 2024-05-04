@@ -5,8 +5,15 @@ Controllable* InteractableManager::nearestInteractable(Controllable* object) {
 		if (objects[i] == object || !objects[i]->interactable() || objects[i]->disabled) {
 			
 		}
-		else if (objects[i]->distance(object->getPosition()) <= 50) {
-			return objects[i];
+		else{
+			float rads = objects[i]->getInteractRadius() + object->getInteractRadius();
+			float* objCenter = object->getCenter();
+
+			float distFromCenter = objects[i]->distanceFromCenter(objCenter);
+
+			if (distFromCenter <= rads) {
+				return objects[i];
+			}
 		}
 	}
 

@@ -6,6 +6,10 @@
 class Collider: public Physics {
 public:
 	bool colliding(Collider* object) {
+		if (disabled || object->disabled) {
+			return false;
+		}
+
 		float dist = object->distanceFromCenter(getCenter());
 		float minRadius = (object->getCollisionRadius() + collisionRadius) / 2;
 

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Pickup.hpp"
+#include "pickupTypes.hpp"
 
 class Inventory {
 public:
@@ -20,6 +21,18 @@ public:
 			removeItem(itemIndex);
 		}
 	}
+	
+	bool useItemType(pickupTypes type) {
+		for (int i = 0; i < items.size(); i++) {
+			if (items[i]->getPickupType() == type && items[i]->use()) {
+				removeItem(i);
+
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	void dropItem(int itemIndex) {
 		if (itemIndex >= items.size()) {
@@ -35,7 +48,9 @@ private:
 	std::vector<Pickup*> items;
 
 	void removeItem(int itemIndex) {
-		delete items[itemIndex];
+		//Pickup* pickup = items[itemIndex];
+
+		//delete pickup;
 
 		items.erase(items.begin() + itemIndex);
 	}

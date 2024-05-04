@@ -43,9 +43,9 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 400, 200 }
     );
 
-    //Pizza* pizza = new Pizza(
-    //    new SDL_FRect{ 500, 500 }
-    //);
+    Pizza* pizza = new Pizza(
+        new SDL_FRect{ 500, 500 }
+    );
 
     renderManager->addUIObject(person);
 

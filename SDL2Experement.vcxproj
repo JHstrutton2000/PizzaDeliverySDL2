@@ -43,6 +43,7 @@
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
     <ClInclude Include="Pickup.hpp" />
+    <ClInclude Include="pickupTypes.hpp" />
     <ClInclude Include="Pizza.h" />
     <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderManager.h" />
