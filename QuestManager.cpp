@@ -3,49 +3,7 @@
 #include <ctime> 
 
 QuestManager::QuestManager() {
-	addDestination(new Building(
-		new SDL_FRect{ 50, 200 }
-	));
 
-	addDestination(new Building(
-		new SDL_FRect{ 50, 400 }
-	));
-
-
-	addDestination(new Building(
-		new SDL_FRect{ 200, 200 }
-	));
-
-	addDestination(new Building(
-		new SDL_FRect{ 200, 400 }
-	));
-
-
-	addDestination(new Building(
-		new SDL_FRect{ 350, 200 }
-	));
-
-	addDestination(new Building(
-		new SDL_FRect{ 350, 400 }
-	));
-
-
-	addDestination(new Building(
-		new SDL_FRect{ 500, 200 }
-	));
-
-	addDestination(new Building(
-		new SDL_FRect{ 500, 400 }
-	));
-
-
-	addDestination(new Building(
-		new SDL_FRect{ 650, 200 }
-	));
-
-	addDestination(new Building(
-		new SDL_FRect{ 650, 400 }
-	));
 }
 
 void QuestManager::addDestination(Controllable* object){

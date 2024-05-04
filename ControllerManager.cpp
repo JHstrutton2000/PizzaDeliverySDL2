@@ -2,6 +2,7 @@
 #include "physicsManager.h"
 #include "InteractableManager.h"
 #include "CollisionManager.h"
+#include "Person.h"
 
 void ControllerManager::AssignObject(Controllable* setObject) {
 	object = setObject;
@@ -67,6 +68,13 @@ void ControllerManager::keyDown(SDL_KeyboardEvent* key) {
 
 				if (nearestInteractable) {
 					nearestInteractable->interact(object);
+				}
+				else {
+					Person* person = dynamic_cast<Person*>(object);
+
+					if (person) {
+						person->useItemType(pickupTypes::weapon);
+					}
 				}
 			}
 

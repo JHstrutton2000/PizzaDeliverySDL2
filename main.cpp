@@ -43,6 +43,16 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 200, 100 }
     );
 
+    for (float i = 50; i < 700; i+=200) {
+        questManager->addDestination(new Building(
+            new SDL_FRect{ i, 200 }
+        ));
+
+        questManager->addDestination(new Building(
+            new SDL_FRect{ i, 400 }
+        ));
+    }
+
     renderManager->addUIObject(player);
     controllerManager->AssignObject(player);
     questManager->assignObject(player);

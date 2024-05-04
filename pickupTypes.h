@@ -3,7 +3,8 @@
 
 enum pickupTypes {
 	none = 0,
-	pizza = 1
+	pizza = 1,
+	weapon = 2
 };
 
 #endif //Pickup_Types

@@ -20,7 +20,6 @@ public:
 	bool useItemType(pickupTypes type) {
 		for (int i = 0; i < items.size(); i++) {
 			if (items[i]->getPickupType() == type && items[i]->use()) {
-				removeQuest(items[i]);
 				removeItem(i);
 
 				return true;
@@ -50,7 +49,6 @@ private:
 
 		if (items[itemIndex]->use()) {
 
-			removeQuest(items[itemIndex]);
 			removeItem(itemIndex);
 		}
 	}
@@ -60,6 +58,7 @@ private:
 
 		//delete pickup;
 
+		removeQuest(items[itemIndex]);
 		items.erase(items.begin() + itemIndex);
 	}
 

@@ -11,9 +11,9 @@ public:
 	QuestManager();
 	void assignObject(Quest* object);
 	void assignQuest(Pickup* object);
+	void addDestination(Controllable* object);
 	Controllable* getSelected();
 private:
-	void addDestination(Controllable* object);
 	std::vector<Controllable*> questDestinations;
 	Controllable* selectedDestination;
 	Quest* assigned;
