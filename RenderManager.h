@@ -10,8 +10,7 @@ const int SCREEN_HEIGHT = 600;
 
 class RenderManager {
 public:
-	RenderManager();
-	~RenderManager();
+	RenderManager(SDL_Window* _window, SDL_Renderer* _renderer);
 
 	void render();
 	void addObject(Rendered* object);

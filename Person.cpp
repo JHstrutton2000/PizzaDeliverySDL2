@@ -20,7 +20,6 @@ Person::Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	scene = _scene;
 
 	scene->renderManager->addObject(this);
-
 	scene->physicsManager->addObject(this);
 	scene->interactableManager->addObject(this);
 	scene->collisionManager->addObject(this);

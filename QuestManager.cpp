@@ -11,6 +11,10 @@ void QuestManager::assignObject(Quest* object) {
 }
 
 void QuestManager::assignQuest(Pickup* object) {
+	if (questDestinations.size() <= 0) {
+		return;
+	}
+
 	srand((unsigned)time(0));
 
 	int randomIndex = rand() % questDestinations.size();

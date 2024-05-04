@@ -52,10 +52,6 @@ void Building::Render(SDL_Renderer* renderer, int stage) {
 
 	SetRenderColor(renderer, color);
 	SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
-
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	SDL_RenderFillRectF(renderer, doorPos);
-
 }
 
 void Building::interact(Controllable* object) {

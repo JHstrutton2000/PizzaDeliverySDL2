@@ -9,7 +9,7 @@
 
 class Scene {
 public:
-	Scene();
+	Scene(SDL_Window* _window, SDL_Renderer* _renderer);
 	void update();
 	void render();
 

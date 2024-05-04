@@ -10,6 +10,20 @@ public:
 	Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x90, 0x20, 0x00 });
 	~Person();
 
+	void setScene(Scene* _scene) {
+		scene->renderManager->removeObject(this);
+		scene->physicsManager->removeObject(this);
+		scene->interactableManager->removeObject(this);
+		scene->collisionManager->removeObject(this);
+
+		scene = _scene;
+
+		scene->renderManager->addObject(this);
+		scene->physicsManager->addObject(this);
+		scene->interactableManager->addObject(this);
+		scene->collisionManager->addObject(this);
+	}
+
 	void Render(SDL_Renderer* renderer, int stage) override;
 	void RenderUI(SDL_Renderer* renderer) override;
 
