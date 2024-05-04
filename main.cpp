@@ -35,24 +35,22 @@ int main(int argc, char* args[]) {
     //    new SDL_FRect{ 100, 100 }
     //);
 
-    Person* person = new Person(
+    Person* player = new Person(
         new SDL_FRect{ 200, 100 }
-    );
-
-    Building* building = new Building(
-        new SDL_FRect{ 400, 200 }
     );
 
     Pizza* pizza = new Pizza(
         new SDL_FRect{ 500, 500 }
     );
 
-    renderManager->addUIObject(person);
+    Building* building = new Building(
+        new SDL_FRect{ 400, 200 }
+    );
 
+    renderManager->addUIObject(player);
+    controllerManager->AssignControlledObject(player);
 
-    controllerManager->AssignControlledObject(person);
-
-    person->addQuest(pizza, questTypes::pickup);
+    player->addQuest(pizza, building, questTypes::pickup);
 
 
     //person->pickup(pizza);

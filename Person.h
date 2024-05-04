@@ -9,8 +9,8 @@ public:
 	Person(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x90, 0x20, 0x00 });
 	~Person();
 
-	void Render(SDL_Renderer* renderer, int stage);
-	void RenderUI(SDL_Renderer* renderer, int stage);
+	void Render(SDL_Renderer* renderer, int stage) override;
+	void RenderUI(SDL_Renderer* renderer) override;
 
 	void applyPosition(float* move) override;
 	void interact(Controllable* object) override;

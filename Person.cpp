@@ -18,6 +18,7 @@ Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 	stage = 1;
 
 	renderManager->addObject(this);
+
 	physicsManager->addObject(this);
 	interactableManager->addObject(this);
 	collisionManager->addObject(this);
@@ -44,17 +45,18 @@ void Person::Render(SDL_Renderer* renderer, int stage) {
 	}
 } 
 
-void Person::RenderUI(SDL_Renderer* renderer, int stage) {
-	SDL_FRect* tempPos = (SDL_FRect*)pos;
+void Person::RenderUI(SDL_Renderer* renderer) {
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	renderQuests(renderer);
 
-	SDL_RenderDrawRectF(renderer, new SDL_FRect{
-		tempPos->x - 40, 
-		tempPos->y - 20,
-		40,
-		20
-	});
+	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+
+	//SDL_RenderDrawRectF(renderer, new SDL_FRect{
+	//	tempPos->x - 40, 
+	//	tempPos->y - 20,
+	//	40,
+	//	20
+	//});
 }
 
 void Person::applyPosition(float* move) {

@@ -39,7 +39,7 @@ void RenderManager::render() {
 	}
 
 	for (int i = 0; i < uiObjects.size(); i++) {
-		objects[i]->RenderUI(renderer);
+		uiObjects[i]->RenderUI(renderer);
 	}
 	
 	SDL_RenderPresent(renderer);
