@@ -15,10 +15,10 @@ protected:
 		memset(Acceleration, 0x00, size);
 	}
 
-	~Physics() {
-		delete Velocity;
-		delete Acceleration;
-	}
+	//~Physics() {
+	//	delete Velocity;
+	//	delete Acceleration;
+	//}
 
 	float maxVelocity = 1;
 	float maxAcceleration = 1;

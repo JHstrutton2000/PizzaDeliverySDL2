@@ -6,7 +6,7 @@
 #include "CollisionManager.h"
 
 #include "Person.h"
-#include "pickupTypes.hpp"
+#include "pickup.Types"
 
 Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
@@ -58,10 +58,11 @@ void Building::Render(SDL_Renderer* renderer, int stage) {
 }
 
 void Building::interact(Controllable* object) {
-	Inventory* inventory = dynamic_cast<Inventory*>(object);
+	Person* person = dynamic_cast<Person*>(object);
 
-	if (inventory) {
-		if (inventory->useItemType(pickupTypes::pizza)) {
+	if (person) {
+		if (person->useItemType(pickupTypes::pizza)) {
+			
 			printf("used a pizza!!!");
 		}
 	}

@@ -1,7 +1,7 @@
 #include "Pizza.h"
 #include "renderManager.h"
 #include "collisionManager.h"
-#include "pickupTypes.hpp"
+#include "pickup.Types"
 
 Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;

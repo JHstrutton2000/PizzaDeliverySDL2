@@ -2,9 +2,9 @@
 #define Pickup_HPP
 
 #include "Collider.hpp"
-#include "pickupTypes.hpp"
+#include "pickup.Types"
 
-class Pickup: public Collider {
+class Pickup: public Collider{
 public:
 	virtual bool use() { return pickupUsable; }
 	float getPickupDistance() { return pickupDistance; }

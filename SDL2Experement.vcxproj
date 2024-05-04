@@ -29,6 +29,7 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="physicsManager.cpp" />
     <ClCompile Include="Pizza.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="RenderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,10 +44,14 @@
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="physicsManager.h" />
     <ClInclude Include="Pickup.hpp" />
-    <ClInclude Include="pickupTypes.hpp" />
+    <ClInclude Include="Pickup.types" />
     <ClInclude Include="Pizza.h" />
+    <ClInclude Include="Quest.hpp" />
     <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Quest.types" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

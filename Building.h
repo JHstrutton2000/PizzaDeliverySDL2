@@ -2,7 +2,7 @@
 #include "Rendered.hpp"
 #include "Controllable.hpp"
 
-class Building : public Rendered, public Controllable { // : public Destructible {
+class Building : public Rendered, public Controllable{ // : public Destructible {
 public:
 	Building(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x7F, 0x7F, 0x7F, 0xFF });
 	~Building();

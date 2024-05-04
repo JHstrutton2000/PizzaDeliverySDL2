@@ -3,28 +3,25 @@
 
 #include <vector>
 #include "Pickup.hpp"
-#include "pickupTypes.hpp"
+#include "Quest.hpp"
 
-class Inventory {
+#include "pickup.Types"
+#include "quest.Types"
+
+class Inventory: public Quest {
 public:
 	void pickup(Pickup* item) {
 		addItem(item);
 		item->disabled = true;
-	}
 
-	void useItem(int itemIndex) {
-		if (itemIndex >= items.size()) {
-			return;
-		}
-
-		if (items[itemIndex]->use()) {
-			removeItem(itemIndex);
-		}
+		updateQuest(item, questTypes::deliver);
 	}
 	
 	bool useItemType(pickupTypes type) {
 		for (int i = 0; i < items.size(); i++) {
 			if (items[i]->getPickupType() == type && items[i]->use()) {
+
+				removeQuest(items[i]);
 				removeItem(i);
 
 				return true;
@@ -46,6 +43,18 @@ protected:
 
 private:
 	std::vector<Pickup*> items;
+
+	void useItem(int itemIndex) {
+		if (itemIndex >= items.size()) {
+			return;
+		}
+
+		if (items[itemIndex]->use()) {
+
+			removeQuest(items[itemIndex]);
+			removeItem(itemIndex);
+		}
+	}
 
 	void removeItem(int itemIndex) {
 		//Pickup* pickup = items[itemIndex];

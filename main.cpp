@@ -52,6 +52,8 @@ int main(int argc, char* args[]) {
 
     controllerManager->AssignControlledObject(person);
 
+    person->addQuest(pizza, questTypes::pickup);
+
 
     //person->pickup(pizza);
 

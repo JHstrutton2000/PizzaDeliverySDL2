@@ -2,6 +2,7 @@
 #include "Controllable.hpp"
 #include "Rendered.hpp"
 #include "Inventory.hpp"
+#include "Quest.hpp"
 
 class Person : public Rendered, public Controllable, public Inventory{
 public:
