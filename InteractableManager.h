@@ -1,3 +1,6 @@
+#ifndef InteractableManager_h
+#define InteractableManager_h
+
 #include "vector"
 #include "Controllable.hpp"
 
@@ -10,4 +13,4 @@ private:
 	std::vector<Controllable*> objects;
 };
 
-extern InteractableManager* interactableManager;
+#endif //InteractableManager_h

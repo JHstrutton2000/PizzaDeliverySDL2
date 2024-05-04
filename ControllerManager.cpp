@@ -2,6 +2,7 @@
 #include "physicsManager.h"
 #include "InteractableManager.h"
 #include "CollisionManager.h"
+#include "SceneManager.h"
 #include "Person.h"
 
 void ControllerManager::AssignObject(Controllable* setObject) {
@@ -64,7 +65,7 @@ void ControllerManager::keyDown(SDL_KeyboardEvent* key) {
 					break;
 				}
 
-				Controllable* nearestInteractable = interactableManager->nearestInteractable(object);
+				Controllable* nearestInteractable = sceneManager->getActiveScene()->interactableManager->nearestInteractable(object);
 
 				if (nearestInteractable) {
 					nearestInteractable->interact(object);

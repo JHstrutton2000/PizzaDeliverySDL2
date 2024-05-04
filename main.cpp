@@ -1,12 +1,10 @@
 #include <SDL.h>
 #include <iostream>
 
-#include "QuestManager.h"
-#include "RenderManager.h"
+#include "Scene.h"
+
 #include "ControllerManager.h"
-#include "physicsManager.h"
-#include "InteractableManager.h"
-#include "collisionManager.h"
+#include "SceneManager.h"
 
 #include "Car.h"
 #include "Person.h"
@@ -26,60 +24,60 @@ int main(int argc, char* args[]) {
 
     SDL_Event event;
 
-    renderManager = new RenderManager();
-    physicsManager = new PhysicsManager();
-    collisionManager = new CollisionManager();
+    sceneManager = new SceneManager();
     controllerManager = new ControllerManager();
-    interactableManager = new InteractableManager();
 
-    questManager = new QuestManager();
+    Scene* mainScene = new Scene();
 
+    sceneManager->setActiveScene(mainScene);
+    
 
     Car* car = new Car(
+        mainScene,
         new SDL_FRect{ 100, 100 }
     );
 
     Person* player = new Person(
+        mainScene,
         new SDL_FRect{ 200, 100 }
     );
 
     for (float i = 50; i < 700; i+=200) {
-        questManager->addDestination(new Building(
+        mainScene->questManager->addDestination(new Building(
+            mainScene,
             new SDL_FRect{ i, 200 }
         ));
 
-        questManager->addDestination(new Building(
+        mainScene->questManager->addDestination(new Building(
+            mainScene,
             new SDL_FRect{ i, 400 }
         ));
     }
 
-    renderManager->addUIObject(player);
+    mainScene->renderManager->addUIObject(player);
+    mainScene->questManager->assignObject(player);
+
     controllerManager->AssignObject(player);
-    questManager->assignObject(player);
 
     new Pizza(
+        mainScene,
         new SDL_FRect{ 100, 20 }
     );
 
     new Pizza(
+        mainScene,
         new SDL_FRect{ 150, 20}
     );
 
     new Pizza(
+        mainScene,
         new SDL_FRect{ 200, 20 }
     );
 
     new Pizza(
+        mainScene,
         new SDL_FRect{ 250, 20 }
     );
-
-
-
-    //player->addQuest(pizza, building, questTypes::pickup);
-
-
-    //person->pickup(pizza);
-
 
     int count = 0;
     while (!quit) {
@@ -103,14 +101,13 @@ int main(int argc, char* args[]) {
         }
 
         if (count >= PhysicsUpdate) {
-            physicsManager->update();
             controllerManager->update();
-            collisionManager->update();
+            mainScene->update();
 
             count = 0;
         }
 
-        renderManager->render();
+        mainScene->render();
         count++;
 
         //SDL_Delay(1);

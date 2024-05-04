@@ -24,6 +24,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Controllable.hpp" />
     <ClCompile Include="ControllerManager.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="InteractableManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
@@ -31,6 +32,8 @@
     <ClCompile Include="Pizza.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h" />
@@ -38,6 +41,7 @@
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="ControllerManager.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="InteractableManager.h" />
     <ClInclude Include="Inventory.hpp" />
     <ClInclude Include="Person.h" />
@@ -50,6 +54,8 @@
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="Rendered.hpp" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="questTypes.h" />

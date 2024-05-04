@@ -2,10 +2,6 @@
 #include "Building.h"
 #include <ctime> 
 
-QuestManager::QuestManager() {
-
-}
-
 void QuestManager::addDestination(Controllable* object){
 	questDestinations.push_back(object);
 }
@@ -27,5 +23,3 @@ void QuestManager::assignQuest(Pickup* object) {
 Controllable* QuestManager::getSelected() {
 	return selectedDestination;
 }
-
-QuestManager* questManager = nullptr;

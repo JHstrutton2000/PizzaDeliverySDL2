@@ -15,5 +15,3 @@ void PhysicsManager::update() {
 void PhysicsManager::removeObject(Physics* object) {
 	objects.erase(std::remove(objects.begin(), objects.end(), object), objects.end());
 }
-
-PhysicsManager* physicsManager = nullptr;

@@ -1,3 +1,6 @@
+#ifndef CollisionManager_h
+#define CollisionManager_h
+
 #include "Collider.hpp"
 #include <vector>
 
@@ -11,4 +14,4 @@ private:
 	std::vector<Collider*> objects;
 };
 
-extern CollisionManager* collisionManager;
+#endif //CollisionManager_h

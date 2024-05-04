@@ -5,7 +5,7 @@
 
 #include "pickupTypes.h"
 
-Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
+Pizza::Pizza(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;
 	color = _color;
 
@@ -19,9 +19,11 @@ Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 
 	pickupDistance = 5;
 
-	renderManager->addObject(this);
-	collisionManager->addObject(this);
-	questManager->assignQuest(this);
+	scene = _scene;
+
+	scene->renderManager->addObject(this);
+	scene->collisionManager->addObject(this);
+	scene->questManager->assignQuest(this);
 
 	collisionRadius = (_pos->h);
 	collideable = true;
@@ -31,8 +33,8 @@ Pizza::Pizza(SDL_FRect* _pos, SDL_Color* _color) {
 }
 
 Pizza::~Pizza() {
-	renderManager->removeObject(this);
-	collisionManager->removeObject(this);
+	scene->renderManager->removeObject(this);
+	scene->collisionManager->removeObject(this);
 }
 
 void Pizza::Render(SDL_Renderer* renderer, int stage) {
@@ -52,7 +54,7 @@ float* Pizza::getPosition() {
 bool Pizza::use() {
 	disabled = false;
 
-	questManager->assignQuest(this);
+	scene->questManager->assignQuest(this);
 
 	return true; 
 }

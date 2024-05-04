@@ -8,7 +8,6 @@
 
 class QuestManager {
 public:
-	QuestManager();
 	void assignObject(Quest* object);
 	void assignQuest(Pickup* object);
 	void addDestination(Controllable* object);
@@ -18,7 +17,5 @@ private:
 	Controllable* selectedDestination;
 	Quest* assigned;
 };
-
-extern QuestManager* questManager;
 
 #endif //QuestManager_HPP

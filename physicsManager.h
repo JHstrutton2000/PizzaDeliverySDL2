@@ -1,3 +1,6 @@
+#ifndef PhysicsManager_h
+#define PhysicsManager_h
+
 #include <SDL.h>
 #include <vector>
 #include "Physics.hpp"
@@ -11,4 +14,4 @@ private:
 	std::vector<Physics*> objects;
 };
 
-extern PhysicsManager* physicsManager;
+#endif //PhysicsManager_h

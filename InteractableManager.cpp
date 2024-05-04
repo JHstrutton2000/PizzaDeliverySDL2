@@ -26,5 +26,3 @@ void InteractableManager::addObject(Controllable* object) {
 void InteractableManager::removeObject(Controllable* object) {
 	objects.erase(std::remove(objects.begin(), objects.end(), object), objects.end());
 }
-
-InteractableManager* interactableManager = nullptr;

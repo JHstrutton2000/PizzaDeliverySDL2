@@ -27,5 +27,3 @@ private:
 	std::vector<Rendered*> uiObjects;
 	int maxStage = 0;
 };
-
-extern RenderManager* renderManager;

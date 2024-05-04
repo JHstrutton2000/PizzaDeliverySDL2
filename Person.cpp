@@ -5,7 +5,7 @@
 #include "InteractableManager.h"
 #include "CollisionManager.h"
 
-Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
+Person::Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	pos = (void*)_pos;
 	color = _color;
 
@@ -17,21 +17,23 @@ Person::Person(SDL_FRect* _pos, SDL_Color* _color) {
 
 	stage = 1;
 
-	renderManager->addObject(this);
+	scene = _scene;
 
-	physicsManager->addObject(this);
-	interactableManager->addObject(this);
-	collisionManager->addObject(this);
+	scene->renderManager->addObject(this);
+
+	scene->physicsManager->addObject(this);
+	scene->interactableManager->addObject(this);
+	scene->collisionManager->addObject(this);
 
 	collisionRadius = (_pos->h);
 	collideable = true;
 }
 
 Person::~Person() {
-	renderManager->removeObject(this);
-	physicsManager->removeObject(this);
-	interactableManager->removeObject(this);
-	collisionManager->removeObject(this);
+	scene->renderManager->removeObject(this);
+	scene->physicsManager->removeObject(this);
+	scene->interactableManager->removeObject(this);
+	scene->collisionManager->removeObject(this);
 }
 
 void Person::Render(SDL_Renderer* renderer, int stage) {

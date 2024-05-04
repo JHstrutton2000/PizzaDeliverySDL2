@@ -61,5 +61,3 @@ void RenderManager::removeObject(Rendered* object) {
 void RenderManager::removeUIObject(Rendered* object) {
 	uiObjects.erase(std::remove(uiObjects.begin(), uiObjects.end(), object), uiObjects.end());
 }
-
-RenderManager* renderManager = nullptr;

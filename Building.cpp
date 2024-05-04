@@ -8,13 +8,14 @@
 #include "Person.h"
 #include "pickupTypes.h"
 
-Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
+Building::Building(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->w = 100;
 	_pos->h = 100;
 
 	pos = (void*)_pos;
 	rot = new float(45.0f);
 	color = _color;
+	scene = _scene;
 
 
 	doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
@@ -22,9 +23,9 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 
 	stage = 3;
 
-	interactableManager->addObject(this);
-	collisionManager->addObject(this);
-	renderManager->addObject(this);
+	scene->interactableManager->addObject(this);
+	scene->collisionManager->addObject(this);
+	scene->renderManager->addObject(this);
 
 	collisionRadius = (_pos->h);
 	interactRadius = collisionRadius/2 + 20;
@@ -32,9 +33,9 @@ Building::Building(SDL_FRect* _pos, SDL_Color* _color) {
 }
 Building::~Building() {
 
-	interactableManager->removeObject(this);
-	collisionManager->removeObject(this);
-	renderManager->removeObject(this);
+	scene->interactableManager->removeObject(this);
+	scene->collisionManager->removeObject(this);
+	scene->renderManager->removeObject(this);
 
 	//delete yardPos;
 	delete doorPos;

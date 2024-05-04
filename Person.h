@@ -3,10 +3,11 @@
 #include "Rendered.hpp"
 #include "Inventory.hpp"
 #include "Quest.hpp"
+#include "Scene.h"
 
 class Person : public Rendered, public Controllable, public Inventory{
 public:
-	Person(SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x90, 0x20, 0x00 });
+	Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color = new SDL_Color{ 0x20, 0x90, 0x20, 0x00 });
 	~Person();
 
 	void Render(SDL_Renderer* renderer, int stage) override;
@@ -19,4 +20,6 @@ public:
 	bool canInteract() override;
 
 	void onCollide(Collider* object) override;
+private:
+	Scene* scene;
 };
