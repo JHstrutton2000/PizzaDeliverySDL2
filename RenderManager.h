@@ -12,7 +12,7 @@ class RenderManager {
 public:
 	RenderManager(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Color* _color);
 
-	void render();
+	void render(float* offset);
 	void addObject(Rendered* object);
 	void addUIObject(Rendered* object);
 

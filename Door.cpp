@@ -3,6 +3,9 @@
 #include "Person.h"
 
 Door::Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos) {
+	_pos->w = 5;
+	_pos->h = 5;
+
 	curScene = _curScene;
 	destScene = _destScene;
 	pos = (void*)_pos;
@@ -21,10 +24,13 @@ Door::~Door() {
 
 }
 
-void Door::Render(SDL_Renderer* renderer, int drawStage){
+void Door::Render(SDL_Renderer* renderer, float* offset, int drawStage){
 	if (stage == drawStage) {
+		SDL_FRect* tempPos = (SDL_FRect*)pos;
+		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+		SDL_RenderFillRectF(renderer, adjustedPos);
 	}
 }
 
@@ -50,13 +56,15 @@ void Door::onCollide(Collider* object) {
 		float* tempPos = getCenter();
 		float* outDoorPos = outDoor->getCenter();
 
+		float* offsetPos = sceneManager->getActiveScene()->getOffset();
+
 		float xoff = personPos[0] - tempPos[0];
 		float yoff = personPos[1] - tempPos[1];
 
 		personPos = person->getPosition();
 
-		personPos[0] = outDoorPos[0] - 2*xoff;
-		personPos[1] = outDoorPos[1] - 2*yoff;
+		personPos[0] = outDoorPos[0] - 2*xoff - offsetPos[0];
+		personPos[1] = outDoorPos[1] - 2*yoff - offsetPos[1];
 	}
 }
 

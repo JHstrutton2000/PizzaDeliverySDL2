@@ -6,7 +6,7 @@ RenderManager::RenderManager(SDL_Window* _window, SDL_Renderer* _renderer, SDL_C
 	backgroundColor = _color;
 }
 
-void RenderManager::render() {
+void RenderManager::render(float* offset) {
 	if (renderer == nullptr) {
 		return;
 	}
@@ -22,12 +22,12 @@ void RenderManager::render() {
 				maxStage = curStage;
 			}
 
-			objects[i]->Render(renderer, stage);
+			objects[i]->Render(renderer, offset, stage);
 		}
 	}
 
 	for (int i = 0; i < uiObjects.size(); i++) {
-		uiObjects[i]->RenderUI(renderer);
+		uiObjects[i]->RenderUI(renderer, offset);
 	}
 }
 

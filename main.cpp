@@ -47,7 +47,7 @@ int main(int argc, char* args[]) {
     Scene* mainScene = new Scene(window, renderer);
     Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
 
-    Door* indoorDoor= new Door(indoor, mainScene, new SDL_FRect{ 100, 100, 20, 20 });
+    Door* indoorDoor= new Door(indoor, mainScene, new SDL_FRect{ 100, 100 });
     
     sceneManager->setActiveScene(mainScene);
 
@@ -61,8 +61,10 @@ int main(int argc, char* args[]) {
         new SDL_FRect{ 200, 100 }
     );
 
+    mainScene->setFollowPos(player->getPosition());
+
     for (float i = 50; i < 700; i+=200) {
-        Door* door1 = new Door(mainScene, indoor, new SDL_FRect{ i + 40, 280, 20, 20 });
+        Door* door1 = new Door(mainScene, indoor, new SDL_FRect{ i + 50, 305 });
 
         mainScene->questManager->addDestination(new Building(
             mainScene,
@@ -72,7 +74,7 @@ int main(int argc, char* args[]) {
         door1->setOutDoor(indoorDoor);
         indoorDoor->setOutDoor(door1);
 
-        Door * door2 = new Door(mainScene, indoor, new SDL_FRect{ i + 40, 480, 20, 20 });
+        Door * door2 = new Door(mainScene, indoor, new SDL_FRect{ i + 50, 505 });
         mainScene->questManager->addDestination(new Building(
             mainScene,
             new SDL_FRect{ i, 400 }

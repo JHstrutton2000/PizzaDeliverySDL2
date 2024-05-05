@@ -37,15 +37,18 @@ Pizza::~Pizza() {
 	scene->collisionManager->removeObject(this);
 }
 
-void Pizza::Render(SDL_Renderer* renderer, int drawStage) {
+void Pizza::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	if (disabled) {
 		return;
 	}
 
 	if (stage == drawStage) {
+		SDL_FRect* tempPos = (SDL_FRect*)pos;
+		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+
 		SetRenderColor(renderer, color);
 
-		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+		SDL_RenderFillRectF(renderer, adjustedPos);
 	}
 }
 

@@ -36,7 +36,7 @@ public:
 	}
 
 protected:
-	void renderQuests(SDL_Renderer* renderer) {
+	void renderQuests(SDL_Renderer* renderer, float* offset) {
 		for (int i = 0; i < types.size(); i++) {
 			float* tempPos = nullptr;
 
@@ -50,7 +50,7 @@ protected:
 			}
 
 			if (tempPos) {
-				SDL_FRect* pos = new SDL_FRect{ tempPos[0] + tempPos[2] / 2 - 2, tempPos[1] - 10, 5, 5 };
+				SDL_FRect* pos = new SDL_FRect{ tempPos[0] + tempPos[2] / 2 - 2 - offset[0], tempPos[1] - 10 - offset[1], 5, 5};
 
 				SDL_SetRenderDrawColor(renderer, 20, 20, 20, 0x00);
 				SDL_RenderFillRectF(renderer, pos);

@@ -35,20 +35,24 @@ Person::~Person() {
 	scene->collisionManager->removeObject(this);
 }
 
-void Person::Render(SDL_Renderer* renderer, int drawStage) {
+void Person::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	if (disabled) {
 		return;
 	}
 
 	if (stage == drawStage) {
+
+		SDL_FRect* tempPos = (SDL_FRect*)pos;
+		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+
 		SetRenderColor(renderer, color);
-		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+		SDL_RenderFillRectF(renderer, adjustedPos);
 	}
 } 
 
-void Person::RenderUI(SDL_Renderer* renderer) {
+void Person::RenderUI(SDL_Renderer* renderer, float* offset) {
 
-	renderQuests(renderer);
+	renderQuests(renderer, offset);
 
 	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 

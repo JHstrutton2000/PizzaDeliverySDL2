@@ -36,7 +36,7 @@ Car::~Car() {
 	scene->interactableManager->removeObject(this);
 }
 
-void Car::Render(SDL_Renderer* renderer, int drawStage) {
+void Car::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	if (color == nullptr) {
 		return;
 	}
@@ -47,13 +47,15 @@ void Car::Render(SDL_Renderer* renderer, int drawStage) {
 
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-		float w = tempPos->w / 2;
-		float h = tempPos->h / 2;
+		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h};
 
-		topLeft = { tempPos->x - w, tempPos->y - h }; // top left
-		bottomLeft = { tempPos->x - w, tempPos->y + h }; // bottom left
-		topRight = { tempPos->x + w, tempPos->y - h }; // top right
-		bottomRight = { tempPos->x + w, tempPos->y + h }; // buttom right
+		float w = adjustedPos->w / 2;
+		float h = adjustedPos->h / 2;
+
+		topLeft = { adjustedPos->x - w, adjustedPos->y - h }; // top left
+		bottomLeft = { adjustedPos->x - w, adjustedPos->y + h }; // bottom left
+		topRight = { adjustedPos->x + w, adjustedPos->y - h }; // top right
+		bottomRight = { adjustedPos->x + w, adjustedPos->y + h }; // buttom right
 
 		float dist = sqrtf(pow(w / 2, 2) + pow(h / 2, 2));
 
@@ -70,23 +72,23 @@ void Car::Render(SDL_Renderer* renderer, int drawStage) {
 		float angleBottomLeft = atanf(adjustedbottomLeft.y / adjustedbottomLeft.x) - heading;
 
 		adjustedtopRight = {
-			sinf(angleTopRight) * dist + tempPos->x,
-			cosf(angleTopRight) * dist + tempPos->y
+			sinf(angleTopRight) * dist + adjustedPos->x,
+			cosf(angleTopRight) * dist + adjustedPos->y
 		};
 
 		adjustedtopLeft = {
-			sinf(angleTopLeft) * dist + tempPos->x,
-			cosf(angleTopLeft) * dist + tempPos->y
+			sinf(angleTopLeft) * dist + adjustedPos->x,
+			cosf(angleTopLeft) * dist + adjustedPos->y
 		};
 
 		adjustedbottomRight = {
-			sinf(angleBottomRight) * -dist + tempPos->x,
-			cosf(angleBottomRight) * -dist + tempPos->y
+			sinf(angleBottomRight) * -dist + adjustedPos->x,
+			cosf(angleBottomRight) * -dist + adjustedPos->y
 		};
 
 		adjustedbottomLeft = {
-			sinf(angleBottomLeft) * -dist + tempPos->x,
-			cosf(angleBottomLeft) * -dist + tempPos->y
+			sinf(angleBottomLeft) * -dist + adjustedPos->x,
+			cosf(angleBottomLeft) * -dist + adjustedPos->y
 		};
 
 

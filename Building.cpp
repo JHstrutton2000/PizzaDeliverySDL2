@@ -42,7 +42,7 @@ Building::~Building() {
 }
 
 
-void Building::Render(SDL_Renderer* renderer, int drawStage) {
+void Building::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	if (color == nullptr) {
 		return;
 	}
@@ -50,8 +50,10 @@ void Building::Render(SDL_Renderer* renderer, int drawStage) {
 	// SDL_SetRenderDrawColor(renderer, 0, 200, 0, 0);
 	// SDL_RenderFillRectF(renderer, yardPos);
 	if (stage == drawStage) {
+		SDL_FRect* tempPos = (SDL_FRect*)pos;
+
 		SetRenderColor(renderer, color);
-		SDL_RenderFillRectF(renderer, (SDL_FRect*)pos);
+		SDL_RenderFillRectF(renderer, new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h});
 	}
 }
 
