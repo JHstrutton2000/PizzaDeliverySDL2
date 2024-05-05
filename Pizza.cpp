@@ -6,11 +6,13 @@
 #include "pickupTypes.h"
 
 Pizza::Pizza(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
-	pos = (void*)_pos;
 	color = _color;
 
 	_pos->w = 10;
 	_pos->h = 10;
+
+	pos = (void*)_pos;
+	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
 
 	maxAcceleration = 0.1f;
 	maxVelocity = 0.1f;
@@ -44,11 +46,14 @@ void Pizza::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 
 	if (stage == drawStage) {
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
-		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+		SDL_FRect* rendPos = (SDL_FRect*)renderPos;
+
+		rendPos->x = tempPos->x - offset[0];
+		rendPos->y = tempPos->y - offset[1];
 
 		SetRenderColor(renderer, color);
 
-		SDL_RenderFillRectF(renderer, adjustedPos);
+		SDL_RenderFillRectF(renderer, rendPos);
 	}
 }
 

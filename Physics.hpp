@@ -2,6 +2,7 @@
 #define PHYSICS_HPP
 
 #include <vector>
+#include "SDL.h"
 
 class Physics {
 protected:
@@ -13,6 +14,8 @@ protected:
 
 		Acceleration = (float*)malloc(size);
 		memset(Acceleration, 0x00, size);
+
+		Center = getPosition();
 	}
 
 	//~Physics() {
@@ -26,6 +29,7 @@ protected:
 
 	float* Velocity;
 	float* Acceleration;
+	float* Center;
 	float heading;
 
 	virtual void applyPosition(float* move) { return; }
@@ -61,7 +65,14 @@ public:
 	//}
 
 	virtual float* getPosition() { return nullptr; }
-	virtual float* getCenter() { return getPosition(); }
+	virtual float* getCenter() { 
+		if (Center) {
+			return Center;
+		}
+		else {
+			return getPosition();
+		}
+	}
 
 	void setPosition(float* pos) {
 		float* curPos = getPosition();
@@ -93,6 +104,11 @@ public:
 	void applyAcceleration(float* move) {
 		Acceleration[0] += move[0];
 		Acceleration[1] += move[1];
+	}
+
+	void applyAcceleration(float x, float y) {
+		Acceleration[0] += x;
+		Acceleration[1] += y;
 	}
 
 	void applyVelocity(float* move) {

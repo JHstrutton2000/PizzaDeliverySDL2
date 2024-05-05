@@ -12,7 +12,8 @@ Car::Car(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color){
 	_pos->h = 40;
 
 	pos = (void*)_pos;
-	rot = new float(45.0f);
+	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	rot = 45.0f;
 	color = _color;
 
 	maxAcceleration = 0.5;
@@ -50,12 +51,13 @@ void Car::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 
 		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h};
 
-		float w = adjustedPos->w / 2;
-		float h = adjustedPos->h / 2;
 
-		topLeft = { adjustedPos->x - w, adjustedPos->y - h }; // top left
-		bottomLeft = { adjustedPos->x - w, adjustedPos->y + h }; // bottom left
-		topRight = { adjustedPos->x + w, adjustedPos->y - h }; // top right
+		float w = tempPos->w / 2;
+		float h = tempPos->h / 2;
+
+		topLeft     = { adjustedPos->x - w, adjustedPos->y - h }; // top left
+		bottomLeft  = { adjustedPos->x - w, adjustedPos->y + h }; // bottom left
+		topRight    = { adjustedPos->x + w, adjustedPos->y - h }; // top right
 		bottomRight = { adjustedPos->x + w, adjustedPos->y + h }; // buttom right
 
 		float dist = sqrtf(pow(w / 2, 2) + pow(h / 2, 2));

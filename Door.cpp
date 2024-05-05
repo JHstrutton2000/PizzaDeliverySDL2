@@ -9,6 +9,8 @@ Door::Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos) {
 	curScene = _curScene;
 	destScene = _destScene;
 	pos = (void*)_pos;
+	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	Center = new float[2];
 
 	collideable = true;
 
@@ -27,10 +29,13 @@ Door::~Door() {
 void Door::Render(SDL_Renderer* renderer, float* offset, int drawStage){
 	if (stage == drawStage) {
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
-		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+		SDL_FRect* rendPos = (SDL_FRect*)renderPos;
+
+		rendPos->x = tempPos->x - offset[0];
+		rendPos->y = tempPos->y - offset[1];
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-		SDL_RenderFillRectF(renderer, adjustedPos);
+		SDL_RenderFillRectF(renderer, rendPos);
 	}
 }
 
@@ -42,7 +47,10 @@ float* Door::getPosition()
 float* Door::getCenter() {
 	SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-	return new float[2] {tempPos->x + tempPos->w / 2, tempPos->y + tempPos->h / 2};
+	Center[0] = tempPos->x + tempPos->w / 2;
+	Center[1] = tempPos->y + tempPos->h / 2;
+
+	return Center;
 }
 
 void Door::onCollide(Collider* object) {
@@ -55,9 +63,6 @@ void Door::onCollide(Collider* object) {
 		float* personPos = person->getCenter();
 		float* tempPos = getCenter();
 		float* outDoorPos = outDoor->getCenter();
-
-		//float* destPosOffset = destScene->getOffset();
-		//float* curSceneOffset = curScene->getOffset();
 
 		float xoff = personPos[0] - tempPos[0];
 		float yoff = personPos[1] - tempPos[1];

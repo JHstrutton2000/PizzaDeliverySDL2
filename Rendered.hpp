@@ -9,11 +9,11 @@ class Rendered {
 protected:
 	~Rendered() {
 		delete pos;
-		delete rot;
 		delete color;
 	}
 	void* pos;
-	float* rot;
+	void* renderPos;
+	float rot;
 	SDL_Color* color;
 	SDL_Renderer* renderer;
 	int stage = 0;

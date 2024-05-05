@@ -13,13 +13,17 @@ Building::Building(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	_pos->h = 100;
 
 	pos = (void*)_pos;
-	rot = new float(45.0f);
+	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	Center = new float[2];
+
+	rot = 45.0f;
 	color = _color;
 	scene = _scene;
 
 
-	doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
+	//doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
 	//yardPos = new SDL_FRect{ _pos->x - 10, _pos->y -10, 120, 120 };
+
 
 	stage = 3;
 
@@ -51,9 +55,13 @@ void Building::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	// SDL_RenderFillRectF(renderer, yardPos);
 	if (stage == drawStage) {
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
+		SDL_FRect* rendPos = (SDL_FRect*)renderPos;
+
+		rendPos->x = tempPos->x - offset[0];
+		rendPos->y = tempPos->y - offset[1];
 
 		SetRenderColor(renderer, color);
-		SDL_RenderFillRectF(renderer, new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h});
+		SDL_RenderFillRectF(renderer, rendPos);
 	}
 }
 
@@ -77,5 +85,8 @@ float* Building::getPosition() {
 float* Building::getCenter() {
 	SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-	return new float[2] {tempPos->x + tempPos->w/2, tempPos->y + tempPos->h/2};
+	Center[0] = tempPos->x + tempPos->w / 2;
+	Center[1] = tempPos->y + tempPos->h / 2;
+
+	return Center;
 }

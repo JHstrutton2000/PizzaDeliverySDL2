@@ -11,17 +11,17 @@ void ControllerManager::AssignObject(Controllable* setObject) {
 
 void ControllerManager::update() {
 	if (w_down) {
-		object->applyAcceleration(new float[2] {0, -1});
+		object->applyAcceleration(0, -1);
 	}
 	else if (s_down) {
-		object->applyAcceleration(new float[2] {0, 1});
+		object->applyAcceleration(0, 1);
 	}
 
 	if (a_down) {
-		object->applyAcceleration(new float[2] {-1, 0});
+		object->applyAcceleration(-1, 0);
 	}
 	else if (d_down) {
-		object->applyAcceleration(new float[2] {1, 0});
+		object->applyAcceleration(1, 0);
 	}
 }
 

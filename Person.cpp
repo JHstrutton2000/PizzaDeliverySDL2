@@ -6,11 +6,14 @@
 #include "CollisionManager.h"
 
 Person::Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
-	pos = (void*)_pos;
 	color = _color;
 
 	_pos->w = 10;
 	_pos->h = 20;
+
+	pos = (void*)_pos;
+	renderPos = (void*)new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	Center = new float[2];
 
 	maxAcceleration = 0.1f;
 	maxVelocity = 0.1f;
@@ -41,12 +44,15 @@ void Person::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 	}
 
 	if (stage == drawStage) {
-
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
-		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x  - offset[0], tempPos->y  -  offset[1], tempPos->w, tempPos->h };
+		SDL_FRect* rendPos = (SDL_FRect*)renderPos;
+
+		rendPos->x = tempPos->x - offset[0];
+		rendPos->y = tempPos->y - offset[1];
+
 
 		SetRenderColor(renderer, color);
-		SDL_RenderFillRectF(renderer, adjustedPos);
+		SDL_RenderFillRectF(renderer, rendPos);
 	}
 } 
 
@@ -83,7 +89,10 @@ float* Person::getPosition() {
 float* Person::getCenter() {
 	SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-	return new float[2] {tempPos->x + tempPos->w / 2, tempPos->y + tempPos->h / 2};
+	Center[0] = tempPos->x + tempPos->w / 2;
+	Center[1] = tempPos->y + tempPos->h / 2;
+
+	return Center;
 }
 
 bool Person::canInteract() {

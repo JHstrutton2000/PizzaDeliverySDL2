@@ -13,6 +13,9 @@ public:
 		targets.push_back(target);
 		destinations.push_back(destination);
 		types.push_back(type);
+
+		SDL_FRect tempPos = SDL_FRect{ 0, 0, 5, 5 };
+		questPositions.push_back(tempPos);
 	}
 
 	void removeQuest(Physics* target) {
@@ -50,10 +53,11 @@ protected:
 			}
 
 			if (tempPos) {
-				SDL_FRect* pos = new SDL_FRect{ tempPos[0] + tempPos[2] / 2 - 2 - offset[0], tempPos[1] - 10 - offset[1], 5, 5};
+				questPositions[i].x = tempPos[0] + tempPos[2] / 2 - 2 - offset[0];
+				questPositions[i].y = tempPos[1] - 10 - offset[1];
 
 				SDL_SetRenderDrawColor(renderer, 20, 20, 20, 0x00);
-				SDL_RenderFillRectF(renderer, pos);
+				SDL_RenderFillRectF(renderer, &questPositions[i]);
 			}
 		}
 
@@ -63,6 +67,7 @@ private:
 	std::vector<questTypes> types;
 	std::vector<Physics*> targets;
 	std::vector<Physics*> destinations;
+	std::vector<SDL_FRect> questPositions;
 
 	int findQuest(Physics* target) {
 		auto it = std::find(targets.begin(), targets.end(), target);
@@ -78,6 +83,7 @@ private:
 		types.erase(types.begin() + index);
 		targets.erase(targets.begin() + index);
 		destinations.erase(destinations.begin() + index);
+		questPositions.erase(questPositions.begin() + index);
 	}
 
 	void updateQuest(int index, Physics* destination, questTypes type) {
