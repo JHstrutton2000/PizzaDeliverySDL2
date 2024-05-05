@@ -1,6 +1,7 @@
 #include "Car.h"
 #include "ControllerManager.h"
 
+#include "sceneManager.h"
 #include "RenderManager.h"
 #include "physicsManager.h"
 #include "InteractableManager.h"
@@ -116,6 +117,8 @@ void Car::interact(Controllable* object) {
 	controllerManager->AssignObject(this);
 	driver = object;
 	driver->disabled = true;
+
+	sceneManager->getActiveScene()->setFollowPos(getPosition());
 }
 
 bool Car::interactable() {
@@ -127,6 +130,8 @@ bool Car::canInteract() {
 	
 	driver->setPosition(getPosition());
 	driver->disabled = false;
+
+	sceneManager->getActiveScene()->setFollowPos(driver->getPosition());
 
 	driver = nullptr;
 

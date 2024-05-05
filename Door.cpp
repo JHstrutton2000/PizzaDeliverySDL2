@@ -56,15 +56,16 @@ void Door::onCollide(Collider* object) {
 		float* tempPos = getCenter();
 		float* outDoorPos = outDoor->getCenter();
 
-		float* offsetPos = sceneManager->getActiveScene()->getOffset();
+		//float* destPosOffset = destScene->getOffset();
+		//float* curSceneOffset = curScene->getOffset();
 
 		float xoff = personPos[0] - tempPos[0];
 		float yoff = personPos[1] - tempPos[1];
 
 		personPos = person->getPosition();
 
-		personPos[0] = outDoorPos[0] - 2*xoff - offsetPos[0];
-		personPos[1] = outDoorPos[1] - 2*yoff - offsetPos[1];
+		personPos[0] = outDoorPos[0] - 2*xoff;
+		personPos[1] = outDoorPos[1] - 2*yoff;
 	}
 }
 
