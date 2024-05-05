@@ -49,7 +49,10 @@ void Car::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 
 		SDL_FRect* tempPos = (SDL_FRect*)pos;
 
-		SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h};
+		//SDL_FRect* adjustedPos = new SDL_FRect{ tempPos->x - offset[0], tempPos->y - offset[1], tempPos->w, tempPos->h};
+		SDL_FRect* adjustedPos = (SDL_FRect*)renderPos;
+		adjustedPos->x = tempPos->x - offset[0];
+		adjustedPos->y = tempPos->y - offset[1];
 
 
 		float w = tempPos->w / 2;

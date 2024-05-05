@@ -51,10 +51,10 @@ int main(int argc, char* args[]) {
     
     sceneManager->setActiveScene(mainScene);
 
-    //Car* car = new Car(
-    //    mainScene,
-    //    new SDL_FRect{ 100, 100 }
-    //);
+    Car* car = new Car(
+        mainScene,
+        new SDL_FRect{ 100, 100 }
+    );
 
     Person* player = new Person(
         mainScene,
