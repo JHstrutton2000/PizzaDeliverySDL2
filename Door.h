@@ -5,7 +5,7 @@
 
 class Door: public Rendered, public Controllable {
 public:
-	Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos);
+	Door(Scene* _curScene, SDL_FRect* _pos);
 	~Door();
 	void Render(SDL_Renderer* renderer, float* offset, int drawStage);
 
@@ -15,9 +15,11 @@ public:
 	void onCollide(Collider* object) override;
 
 	void setOutDoor(Door* door);
+	Scene* getScene();
+	static void setDestinations(Door* door1, Door* door2);
 private:
 	Scene* curScene;
-	Scene* destScene;
+	//Scene* destScene;
 
 	Door* outDoor;
 };

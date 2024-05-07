@@ -2,12 +2,13 @@
 #include "SceneManager.h"
 #include "Person.h"
 
-Door::Door(Scene* _curScene, Scene* _destScene, SDL_FRect* _pos) {
-	_pos->w = 5;
-	_pos->h = 5;
+Door::Door(Scene* _curScene, SDL_FRect* _pos) {
+	if (_pos->w <= 0 || _pos->h <= 0) {
+		_pos->w = 5;
+		_pos->h = 5;
+	}
 
 	curScene = _curScene;
-	destScene = _destScene;
 	pos = (void*)_pos;
 	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
 	Center = new float[2];
@@ -56,9 +57,11 @@ float* Door::getCenter() {
 void Door::onCollide(Collider* object) {
 	Person* person = dynamic_cast<Person*>(object);
 
-	if (person) {
-		sceneManager->setActiveScene(destScene);
-		person->setScene(destScene);
+	if (person && outDoor) {
+		Scene* outScene = outDoor->getScene();
+
+		sceneManager->setActiveScene(outScene);
+		person->setScene(outScene);
 
 		float* personPos = person->getCenter();
 		float* tempPos = getCenter();
@@ -76,4 +79,14 @@ void Door::onCollide(Collider* object) {
 
 void Door::setOutDoor(Door* door){
 	outDoor = door;
+}
+
+Scene* Door::getScene()
+{
+	return curScene;
+}
+
+void Door::setDestinations(Door* door1, Door* door2) {
+	door1->setOutDoor(door2);
+	door2->setOutDoor(door1);
 }

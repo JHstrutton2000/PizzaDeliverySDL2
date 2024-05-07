@@ -10,6 +10,12 @@ public:
 			return false;
 		}
 
+		for (int i = 0; i < colliderBlackList.size(); i++) {
+			if (object == colliderBlackList[i]) {
+				return false;
+			}
+		}
+
 		float dist = object->distanceFromCenter(getCenter());
 		float minRadius = (object->getCollisionRadius() + collisionRadius) / 2;
 
@@ -22,6 +28,15 @@ public:
 		}
 
 		return false;
+	}
+
+	void addCollisionBlackList(Collider* collider) {
+		colliderBlackList.push_back(collider);
+	}
+
+	static void setCollisionBlackLists(Collider* collider1, Collider* collider2) {
+		collider1->addCollisionBlackList(collider2);
+		collider2->addCollisionBlackList(collider1);
 	}
 
 	float getCollisionRadius() {
@@ -47,6 +62,7 @@ public:
 protected:
 	float collisionRadius = 0;
 	bool collideable = false; 
+	std::vector<Collider*> colliderBlackList;
 };
 
 #endif //Collider_HPP

@@ -20,8 +20,8 @@ Building::Building(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	color = _color;
 	scene = _scene;
 
+	doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
 
-	//doorPos = new SDL_FRect{ _pos->x + 30, _pos->y + 70, 40, 30 };
 	//yardPos = new SDL_FRect{ _pos->x - 10, _pos->y -10, 120, 120 };
 
 
@@ -89,4 +89,22 @@ float* Building::getCenter() {
 	Center[1] = tempPos->y + tempPos->h / 2;
 
 	return Center;
+}
+
+Door* Building::getDoor()
+{
+	return door;
+}
+
+void Building::setOutDoor(Door* outDoor) {
+	door = new Door(
+		scene,
+		doorPos
+	);
+
+	Collider::setCollisionBlackLists(door, this);
+
+	if (door) {
+		door->setOutDoor(outDoor);
+	}
 }

@@ -2,6 +2,7 @@
 #include "Rendered.hpp"
 #include "Controllable.hpp"
 #include "Scene.h"
+#include "Door.h"
 
 class Building : public Rendered, public Controllable{ // : public Destructible {
 public:
@@ -14,8 +15,11 @@ public:
 	bool interactable() override;
 	float* getPosition() override;
 	float* getCenter() override;
+	Door* getDoor();
+	void setOutDoor(Door* outDoor);
 private:
 	SDL_FRect* doorPos;
-	Scene* scene;
 	//SDL_FRect* yardPos;
+	Scene* scene;
+	Door* door;
 };
