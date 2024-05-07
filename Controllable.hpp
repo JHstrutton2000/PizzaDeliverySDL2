@@ -11,6 +11,7 @@ public:
 	float getInteractRadius() { return interactRadius; }
 protected:
 	float interactRadius = 25;
+	Controllable* lastInteract;
 };
 
 #endif //Controllable_HPP

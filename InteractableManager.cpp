@@ -9,9 +9,7 @@ Controllable* InteractableManager::nearestInteractable(Controllable* object) {
 			float rads = objects[i]->getInteractRadius() + object->getInteractRadius();
 			float* objCenter = object->getCenter();
 
-			float distFromCenter = objects[i]->distanceFromCenter(objCenter);
-
-			if (distFromCenter <= rads) {
+			if (objects[i]->withinRadius(objCenter, rads)) {
 				return objects[i];
 			}
 		}

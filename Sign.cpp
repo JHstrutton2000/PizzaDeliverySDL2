@@ -38,6 +38,24 @@ void Sign::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 		SetRenderColor(renderer, color);
 		SDL_RenderFillRectF(renderer, rendPos);
 	}
+
+	if (lastInteract && dialogOpen) {
+		if (!withinRadius(lastInteract->getCenter(), 50)) {
+			closeDialog();
+		}
+
+		SDL_SetRenderDrawColor(renderer, 0x50, 0x50, 0x50, 0x00);
+
+		SDL_RenderFillRectF(renderer, new SDL_FRect{ 
+			0, 
+			SCREEN_HEIGHT - 100, 
+			SCREEN_WIDTH, 
+			200 
+		});
+
+		//Draw Text
+		//readDialog().c_str();
+	}
 }
 
 float* Sign::getPosition() {
@@ -56,7 +74,8 @@ float* Sign::getCenter() {
 
 //Something wants to interact with me.
 void Sign::interact(Controllable* object) {
-	printf(readNext().c_str());
+	lastInteract = object;
+	nextDialog();
 }
 
 bool Sign::interactable() {

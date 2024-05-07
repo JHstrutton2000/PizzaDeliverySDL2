@@ -60,6 +60,12 @@ public:
 		return NULL;
 	}
 
+	bool withinRadius(float* pos, float radius) {
+		if (Center) {
+			return distanceFromCenter(pos) <= radius;
+		}
+	}
+
 	//void scaleVelocity(float scaler) {
 	//	Physics::multiply(Velocity, scaler);
 	//}
