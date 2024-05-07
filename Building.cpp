@@ -32,7 +32,7 @@ Building::Building(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	scene->renderManager->addObject(this);
 
 	collisionRadius = (_pos->h);
-	interactRadius = collisionRadius/2 + 20;
+	interactRadius = _pos->w/2;
 	collideable = true;
 }
 Building::~Building() {

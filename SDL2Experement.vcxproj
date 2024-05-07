@@ -34,6 +34,7 @@
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Sign.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="ControllerManager.h" />
+    <ClInclude Include="Dialog.hpp" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="InteractableManager.h" />
     <ClInclude Include="Inventory.hpp" />
@@ -56,6 +58,7 @@
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Sign.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="questTypes.h" />

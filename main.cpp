@@ -12,6 +12,7 @@
 #include "Person.h"
 #include "Building.h"
 #include "Pizza.h"
+#include "Sign.h"
 
 #define PhysicsUpdate 10
 
@@ -45,8 +46,8 @@ int main(int argc, char* args[]) {
     controllerManager = new ControllerManager();
 
     Scene* mainScene = new Scene(window, renderer);
-    Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
 
+    Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
     Door* indoorDoor= new Door(indoor, new SDL_FRect{ 100, 100 });
     
     sceneManager->setActiveScene(mainScene);
@@ -63,17 +64,33 @@ int main(int argc, char* args[]) {
 
     mainScene->setFollowPos(player->getPosition());
 
+    int buildingIndex = 0;
+
     for (float i = 50; i < 700; i+=200) {
         Building* building1 = new Building(
             mainScene,
             new SDL_FRect{ i, 200 }
         );
 
+        Sign* sign1 = new Sign(
+            mainScene,
+            new SDL_FRect{ i+10, 310 },
+            "Building " + std::to_string(buildingIndex)
+        );
+
         building1->setOutDoor(indoorDoor);
+
+        buildingIndex++;
 
         Building* building2 = new Building(
             mainScene,
             new SDL_FRect{ i, 400 }
+        );
+
+        Sign* sign2 = new Sign(
+            mainScene,
+            new SDL_FRect{ i+10, 510 },
+            "Building " + std::to_string(buildingIndex)
         );
 
         building2->setOutDoor(indoorDoor);
@@ -82,6 +99,8 @@ int main(int argc, char* args[]) {
         mainScene->questManager->addDestination(building2);
 
         indoorDoor->setOutDoor(building1->getDoor());
+
+        buildingIndex++;
     }
 
     mainScene->renderManager->addUIObject(player);
@@ -89,25 +108,30 @@ int main(int argc, char* args[]) {
 
     controllerManager->AssignObject(player);
 
-    new Pizza(
+    Pizza* pizza1 = new Pizza(
         mainScene,
         new SDL_FRect{ 100, 20 }
     );
 
-    new Pizza(
+    Pizza* pizza2 = new Pizza(
         mainScene,
         new SDL_FRect{ 150, 20}
     );
 
-    new Pizza(
+    Pizza* pizza3 = new Pizza(
         mainScene,
         new SDL_FRect{ 200, 20 }
     );
 
-    new Pizza(
+    Pizza* pizza4 = new Pizza(
         mainScene,
         new SDL_FRect{ 250, 20 }
     );
+
+    Collider::setCollisionBlackLists(pizza1, car);
+    Collider::setCollisionBlackLists(pizza2, car);
+    Collider::setCollisionBlackLists(pizza3, car);
+    Collider::setCollisionBlackLists(pizza4, car);
 
     int count = 0;
     while (!quit) {

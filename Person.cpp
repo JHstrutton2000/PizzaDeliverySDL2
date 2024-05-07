@@ -18,6 +18,7 @@ Person::Person(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color) {
 	maxAcceleration = 0.1f;
 	maxVelocity = 0.1f;
 
+	interactRadius = 20;
 	stage = 1;
 
 	scene = _scene;
