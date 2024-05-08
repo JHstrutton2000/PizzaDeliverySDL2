@@ -47,15 +47,15 @@ int main(int argc, char* args[]) {
 
     Scene* mainScene = new Scene(window, renderer);
 
-    //Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
-    //Door* indoorDoor= new Door(indoor, new SDL_FRect{ 100, 100 });
+    Scene* indoor = new Scene(window, renderer, new SDL_Color{ 0xBE, 0x97, 0x5B, 0 });
+    Door* indoorDoor= new Door(indoor, new SDL_FRect{ 100, 100 });
     
     sceneManager->setActiveScene(mainScene);
 
-    //Car* car = new Car(
-    //    mainScene,
-    //    new SDL_FRect{ 100, 100 }
-    //);
+    Car* car = new Car(
+        mainScene,
+        new SDL_FRect{ 100, 100 }
+    );
 
     Person* player = new Person(
         mainScene,
@@ -70,74 +70,74 @@ int main(int argc, char* args[]) {
 
     mainScene->setFollowPos(player->getPosition());
 
-    //int buildingIndex = 0;
+    int buildingIndex = 0;
 
-    //for (float i = 50; i < 700; i+=200) {
-    //    Building* building1 = new Building(
-    //        mainScene,
-    //        new SDL_FRect{ i, 200 }
-    //    );
+    for (float i = 50; i < 700; i+=200) {
+        Building* building1 = new Building(
+            mainScene,
+            new SDL_FRect{ i, 200 }
+        );
 
-    //    Sign* sign1 = new Sign(
-    //        mainScene,
-    //        new SDL_FRect{ i+10, 310 },
-    //        "Building " + std::to_string(buildingIndex)
-    //    );
+        Sign* sign1 = new Sign(
+            mainScene,
+            new SDL_FRect{ i+10, 310 },
+            "Building " + std::to_string(buildingIndex)
+        );
 
-    //    building1->setOutDoor(indoorDoor);
+        building1->setOutDoor(indoorDoor);
 
-    //    buildingIndex++;
+        buildingIndex++;
 
-    //    Building* building2 = new Building(
-    //        mainScene,
-    //        new SDL_FRect{ i, 400 }
-    //    );
+        Building* building2 = new Building(
+            mainScene,
+            new SDL_FRect{ i, 400 }
+        );
 
-    //    Sign* sign2 = new Sign(
-    //        mainScene,
-    //        new SDL_FRect{ i+10, 510 },
-    //        "Building " + std::to_string(buildingIndex)
-    //    );
+        Sign* sign2 = new Sign(
+            mainScene,
+            new SDL_FRect{ i+10, 510 },
+            "Building " + std::to_string(buildingIndex)
+        );
 
-    //    building2->setOutDoor(indoorDoor);
+        building2->setOutDoor(indoorDoor);
 
-    //    mainScene->questManager->addDestination(building1);
-    //    mainScene->questManager->addDestination(building2);
+        mainScene->questManager->addDestination(building1);
+        mainScene->questManager->addDestination(building2);
 
-    //    indoorDoor->setOutDoor(building1->getDoor());
+        indoorDoor->setOutDoor(building1->getDoor());
 
-    //    buildingIndex++;
-    //}
+        buildingIndex++;
+    }
 
     mainScene->renderManager->addUIObject(player);
     mainScene->questManager->assignObject(player);
 
     controllerManager->AssignObject(player);
 
-    //Pizza* pizza1 = new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 100, 20 }
-    //);
+    Pizza* pizza1 = new Pizza(
+        mainScene,
+        new SDL_FRect{ 100, 20 }
+    );
 
-    //Pizza* pizza2 = new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 150, 20}
-    //);
+    Pizza* pizza2 = new Pizza(
+        mainScene,
+        new SDL_FRect{ 150, 20}
+    );
 
-    //Pizza* pizza3 = new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 200, 20 }
-    //);
+    Pizza* pizza3 = new Pizza(
+        mainScene,
+        new SDL_FRect{ 200, 20 }
+    );
 
-    //Pizza* pizza4 = new Pizza(
-    //    mainScene,
-    //    new SDL_FRect{ 250, 20 }
-    //);
+    Pizza* pizza4 = new Pizza(
+        mainScene,
+        new SDL_FRect{ 250, 20 }
+    );
 
-    //Collider::setCollisionBlackLists(pizza1, car);
-    //Collider::setCollisionBlackLists(pizza2, car);
-    //Collider::setCollisionBlackLists(pizza3, car);
-    //Collider::setCollisionBlackLists(pizza4, car);
+    Collider::setCollisionBlackLists(pizza1, car);
+    Collider::setCollisionBlackLists(pizza2, car);
+    Collider::setCollisionBlackLists(pizza3, car);
+    Collider::setCollisionBlackLists(pizza4, car);
 
     int count = 0;
     while (!quit) {

@@ -13,6 +13,7 @@ Car::Car(Scene* _scene, SDL_FRect* _pos, SDL_Color* _color){
 
 	pos = (void*)_pos;
 	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	Center = (float*)pos;
 	rot = 45.0f;
 	color = _color;
 
