@@ -9,7 +9,19 @@ Sign::Sign(Scene* _scene, SDL_FRect* _pos, std::string text, SDL_Color* _color) 
 	color = _color;
 	pos = (void*)_pos;
 	Center = new float[2];
-	renderPos = new SDL_FRect{ 0, 0, _pos->w, _pos->h };
+	renderPos = new SDL_FRect{
+		0, 
+		0, 
+		_pos->w, 
+		_pos->h 
+	};
+
+	dialogPos = new SDL_FRect{
+		0,
+		SCREEN_HEIGHT - 100,
+		SCREEN_WIDTH,
+		200
+	};
 
 	addDialog(text);
 
@@ -19,6 +31,7 @@ Sign::Sign(Scene* _scene, SDL_FRect* _pos, std::string text, SDL_Color* _color) 
 	interactRadius = 2;
 
 	scene->renderManager->addObject(this);
+	scene->renderManager->addUIObject(this);
 	scene->interactableManager->addObject(this);
 }
 
@@ -38,6 +51,9 @@ void Sign::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 		SetRenderColor(renderer, color);
 		SDL_RenderFillRectF(renderer, rendPos);
 	}
+}
+
+void Sign::RenderUI(SDL_Renderer* renderer, float* offset) {
 
 	if (lastInteract && dialogOpen) {
 		if (!withinRadius(lastInteract->getCenter(), 50)) {
@@ -46,12 +62,7 @@ void Sign::Render(SDL_Renderer* renderer, float* offset, int drawStage) {
 
 		SDL_SetRenderDrawColor(renderer, 0x50, 0x50, 0x50, 0x00);
 
-		SDL_RenderFillRectF(renderer, new SDL_FRect{ 
-			0, 
-			SCREEN_HEIGHT - 100, 
-			SCREEN_WIDTH, 
-			200 
-		});
+		SDL_RenderFillRectF(renderer, dialogPos);
 
 		//Draw Text
 		//readDialog().c_str();

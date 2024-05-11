@@ -78,6 +78,7 @@ int main(int argc, char* args[]) {
             new SDL_FRect{ i, 200 }
         );
 
+
         Sign* sign1 = new Sign(
             mainScene,
             new SDL_FRect{ i+10, 310 },
@@ -85,6 +86,7 @@ int main(int argc, char* args[]) {
         );
 
         building1->setOutDoor(indoorDoor);
+        Collider::setCollisionBlackLists(building1->getDoor(), car);
 
         buildingIndex++;
 
@@ -93,6 +95,7 @@ int main(int argc, char* args[]) {
             new SDL_FRect{ i, 400 }
         );
 
+
         Sign* sign2 = new Sign(
             mainScene,
             new SDL_FRect{ i+10, 510 },
@@ -100,6 +103,8 @@ int main(int argc, char* args[]) {
         );
 
         building2->setOutDoor(indoorDoor);
+
+        Collider::setCollisionBlackLists(building2->getDoor(), car);
 
         mainScene->questManager->addDestination(building1);
         mainScene->questManager->addDestination(building2);

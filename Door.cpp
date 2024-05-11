@@ -18,7 +18,7 @@ Door::Door(Scene* _curScene, SDL_FRect* _pos) {
 	curScene->renderManager->addObject(this);
 	curScene->collisionManager->addObject(this);
 
-	collisionRadius = _pos->w;
+	collisionRadius = _pos->h;
 
 	stage = 4;
 }
@@ -79,6 +79,10 @@ void Door::onCollide(Collider* object) {
 
 void Door::setOutDoor(Door* door){
 	outDoor = door;
+}
+
+Door* Door::getOutDoor() {
+	return outDoor;
 }
 
 Scene* Door::getScene()

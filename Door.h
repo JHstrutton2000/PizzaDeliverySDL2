@@ -15,6 +15,7 @@ public:
 	void onCollide(Collider* object) override;
 
 	void setOutDoor(Door* door);
+	Door* getOutDoor();
 	Scene* getScene();
 	static void setDestinations(Door* door1, Door* door2);
 private:
